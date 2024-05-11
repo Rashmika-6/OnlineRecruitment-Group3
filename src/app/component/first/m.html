@@ -1,0 +1,80 @@
+<div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="fname">Full name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fname"
+                placeholder=""
+              />
+            </div>
+            <div class="form-group col-md-10">
+              <label for="inputAddress">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress"
+                placeholder=""
+              />
+            </div>
+
+            <div class="form-group col-md-10">
+              <label for="inputEmail4">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail4"
+                placeholder=""
+              />
+            </div>
+            <div class="form-group col-md-10">
+              <label for="inputPassword4">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword4"
+                placeholder=""
+              />
+            </div>
+            <div class="form-group col-md-10">
+              <label for="phno">Phone Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phno"
+                placeholder=""
+                onblur="validatePhoneNumber()"
+              />
+              <div id="phno-error" style="color: red"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="date">Date of Birth</label>
+              <input type="date" class="form-control" id="date" />
+            </div>
+            <div class="form-group col-md-10">
+              <p style=" margin-bottom: 0;">Select gender</p>
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Female</label>
+            </div>
+            
+            <div class="form-group col-md-2">
+              <label for="nationality">Nationality</label>
+              <select id="nationalitySelect" onchange="saveNationality(this)">
+                <option value="" disabled selected>Select nationality</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="Indian">Indian</option>
+                <option value="Germany">Germany</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+          </div>
+<br>
+          <button type="submit" class="btn btn-primary">Submit</button>

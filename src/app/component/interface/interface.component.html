@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interface</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      .card {
+        width: 55%;
+        height: fit-content;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .input-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .input-field {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .submit-btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .submit-btn:hover {
+        background-color: #0056b3;
+      }
+      /* Main container */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        height: 80vh;
+        background-color: #f5f5f5;
+      }
+
+      .main-content {
+        flex: 1;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+
+      .sidebars {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar {
+        flex: 0 0 200px;
+        background-color: #ddd;
+        padding: 20px;
+      }
+
+      .footer {
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+      .form-group {
+        display: flex;
+        align-items: center;
+      }
+
+      label {
+        flex: 0 0 auto;
+        width: 150px;
+        text-align: left;
+      }
+
+      input {
+        flex: 1;
+        margin-left: 10px;
+      }
+      input textarea {
+        height: 100px;
+      }
+      myform * {
+        box-sizing: border-box;
+      }
+      .myForm label {
+        text-align: left;
+        display: block;
+      }
+      .navigation {
+        background-color: white;
+        padding: 30px;
+      }
+
+      .navigation ul {
+        list-style-type: none; 
+        padding: 0;
+        margin: 0;
+      }
+
+      .navigation li {
+        margin-bottom: 10px; 
+      }
+
+      .navigation a {
+        display: block; 
+        color: #160202; 
+        text-decoration: none; 
+        padding: 10px; 
+        transition: background-color 0.3s; 
+      }
+
+      .navigation a:hover {
+        background-color: white; }
+
+      .sidebar-content {
+  width: 217px;
+  height: 100px; 
+  background-color: #f0f0f0; 
+  padding: 10px; 
+  border-radius: 5px; 
+  margin-bottom: 20px;}
+.sidebar-content p {
+  margin: 0; 
+  line-height: 1.5;
+    overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-content">
+        <h1>Software Jobs</h1>
+        <div class="container">
+          <div class="card">
+            <h2>Send us mail</h2>
+            <form
+              class="myform"
+              style="gap: 10px; display: inline-grid"
+              [formGroup]="myForm"
+              (submit)="submitForm()"
+            >
+              <div class="form-row" style="display: contents">
+                <div class="form-group col-md-10 mb-4">
+                  <label for="fname">Name</label><br />
+                  <input
+                    type="text"
+                    class="form-control mb-5"
+                    id="fname"
+                    formControlName="fname"
+                  />
+
+                  <div
+                    *ngIf="
+                      Fullname.invalid && (Fullname.dirty || Fullname.touched)
+                    "
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="Fullname.errors?.['required']">
+                      Full name is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-10">
+                  <label for="inputEmail4">Email</label><br />
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    formControlName="email"
+                  />
+
+                  <div
+                    *ngIf="Email.invalid && (Email.dirty || Email.touched)"
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="Email.errors?.['required']">
+                      Email is required.
+                    </div>
+                    <div *ngIf="Email.errors?.['email']">
+                      Invalid email format.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-10">
+                  <label for="phno">Phone Number</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="phno"
+                    placeholder=""
+                    formControlName="phno"
+                  />
+
+                  <div
+                    *ngIf="Phno.invalid && (Phno.dirty || Phno.touched)"
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="Phno.errors?.['required']">
+                      Phone Number is required.
+                    </div>
+                    <div *ngIf="Phno.errors?.['pattern']">
+                      Phone Number is invalid.
+                    </div>
+                    <div *ngIf="Phno.errors?.['minlength']">
+                      Phone Number is too short.
+                    </div>
+                    <div *ngIf="Phno.errors?.['maxlength']">
+                      Phone Number is too long.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-10">
+                  <label for="passingYear">Year of Passing</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="passingYear"
+                    formControlName="passingYear"
+                  />
+
+                  <div
+                    *ngIf="
+                      PassingYear.invalid &&
+                      (PassingYear.dirty || PassingYear.touched)
+                    "
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="PassingYear.errors?.['required']">
+                      Year of Passing is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-10">
+                  <label for="language">Language</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="language"
+                    formControlName="language"
+                  />
+                </div>
+
+                <div class="form-group col-md-10">
+                  <label for="skills">Skills</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="skills"
+                    formControlName="skills"
+                  />
+                  <!-- Validation Messages for Skills Field -->
+                  <div
+                    *ngIf="Skills.invalid && (Skills.dirty || Skills.touched)"
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="Skills.errors?.['required']">
+                      Skills are required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Projects Field -->
+                <div class="form-group col-md-10">
+                  <label for="projects">Projects</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="projects"
+                    formControlName="projects"
+                  />
+                </div>
+
+                <!-- Resume Field -->
+                <div class="form-group col-md-10">
+                  <label for="resume">Paste your resume here</label><br />
+                  <textarea
+                    id="resume"
+                    class="form-control"
+                    rows="5"
+                    formControlName="resume"
+                  ></textarea>
+                  <!-- Validation Messages for Resume Field -->
+                  <div
+                    *ngIf="Resume.invalid && (Resume.dirty || Resume.touched)"
+                    class="form-text text-danger"
+                  >
+                    <div *ngIf="Resume.errors?.['required']">
+                      Resume is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="sidebars">
+        <div class="sidebar">
+          <h2></h2>
+          <nav class="navigation">
+            <ul>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/jobs">Jobs</a></li>
+              <li><a href="/candidates">Candidates</a></li>
+              <li><a href="/applications">Applications</a></li>
+              <li><a href="/reports">Reports</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="sidebar-content">
+          <h2></h2>
+          <p>
+            "Empower your talent search: Access comprehensive candidate
+            profiles, streamline hiring processes, and cultivate a diverse
+            workforce with our online recruitment platform.".
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Footer Content &copy; 2024</p>
+    </div>
+  </body>
+</html>

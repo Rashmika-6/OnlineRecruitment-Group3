@@ -1,0 +1,38 @@
+print("Hello World")
+s=set([1,23,3,4])
+
+
+s.add(90)
+print(len(s))
+
+# y = map(int,input().split())
+# print(type(y))
+
+# d = dict()
+# var = input('Enter input: ')
+# key, value = var.split()
+# d[key] = int(value)
+# print(d)
+# Ask the user to input the dictionary as a string
+dict_string = input("Enter the dictionary as a string (e.g., {1:29, 2:10, 9:30}): ")
+
+# Remove the outer curly braces
+dict_string = dict_string.strip('{}')
+
+# Split the string by commas to get key-value pairs
+pairs = dict_string.split(',')
+
+# Initialize an empty dictionary
+my_dict = {}
+
+# Iterate over key-value pairs
+for pair in pairs:
+    # Split each pair into key and value
+    key, value = pair.split(':')
+    
+    # Convert key and value to integers (assuming they are integers)
+    key = int(key.strip())
+    value = int(value.strip())
+    
+    # Add key-value pair to the dictionary
+    my_dict[key] = value
