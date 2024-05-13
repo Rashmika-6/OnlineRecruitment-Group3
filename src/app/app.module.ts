@@ -16,6 +16,13 @@ import { RoletypeComponent } from './component/roletype/roletype.component';
 import { InterfaceComponent } from './component/interface/interface.component';
 import { ContentComponent } from './component/content/content.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostjobComponent } from './component/postjob/postjob.component';
+import { Job4uComponent } from './component/job4u/job4u.component';
+import { StudentComponent } from './component/student/student.component';
+import { CollegeComponent } from './component/college/college.component';
+import { CompanyComponent } from './component/company/company.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
       RoletypeComponent,
       InterfaceComponent,
       ContentComponent,
+      PostjobComponent,
+      Job4uComponent,
+      StudentComponent,
+      CollegeComponent,
+      CompanyComponent
+      
+      
   ], //logical grouping of components
   imports: [
     BrowserModule,

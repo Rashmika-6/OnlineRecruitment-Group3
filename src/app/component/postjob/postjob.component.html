@@ -1,0 +1,94 @@
+<body class="job-post-section">
+    <div class="container">
+        <div class="apply_box">
+            <h1>Post your Job here !!</h1>&nbsp;
+            <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+                <div class="form_container">
+                    <div class="form-group">
+                        <label for="jobName"  class="required">Job Name </label>
+                        <input [class.is-invalid]="jobName?.invalid &&
+                        jobName?.touched" class="form-control" id="jobName" type="text" placeholder="Enter Job Name" formControlName="jobName">
+                        <div *ngIf="jobName?.invalid && jobName?.touched">
+                            <small *ngIf="jobName?.errors?.['required']" class="text-danger">job Name is required</small>
+                            <small *ngIf="jobName?.errors?.['minlength']" class="text-danger">job Name must be {{ jobName.errors?.["minlength"].requiredLength }} characters</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary"  class="required">Salary </label>
+                        <input [class.is-invalid]="salary?.invalid &&
+                        salary?.touched" class="form-control" class="form-control" id="salary" type="text" placeholder="Enter the Salary" formControlName="salary">
+                        <div *ngIf="salary?.invalid && salary?.touched">
+                            <small *ngIf="salary?.errors?.['required']" class="text-danger">salary is required</small>
+                            <small *ngIf="salary?.errors?.['minlength']" class="text-danger">salary must be {{ salary.errors?.["minlength"].requiredLength }} characters</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobType"  class="required">Job Type </label>
+                        <div class="select-style">
+                            <select class="form-control" id="jobType">
+                                <option selected disabled>Select Job Type</option>
+                                <option>Full Time</option>
+                                <option>Part Time</option>
+                                <option>Internship</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobDescription"  class="required">Job Description </label>
+                        <textarea [class.is-invalid]="jobDescription?.invalid &&
+                        jobDescription?.touched" class="form-control" class="form-control" id="jobDescription"
+                            placeholder="Enter Job Description" formControlName="jobDescription"></textarea>
+                            <div *ngIf="jobDescription?.invalid && jobDescription?.touched">
+                                <small *ngIf="jobDescription?.errors?.['required']" class="text-danger">jobDescription is required</small>
+                                <small *ngIf="jobDescription?.errors?.['minlength']" class="text-danger">jobDescription must be {{ jobDescription.errors?.["minlength"].requiredLength }} characters</small>
+                              </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber"  class="required">Phone Number </label>
+                        <input [class.is-invalid]="phoneNumber?.invalid &&
+                        phoneNumber?.touched" type="number" pattern="^\d{10}$" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber">
+                        <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
+                            <small *ngIf="phoneNumber?.errors?.['required']" class="text-danger">phoneNumber is required</small>
+                            <small *ngIf="phoneNumber?.errors?.['pattern']" class="text-danger">phoneNumber must be 10 digits.</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vacancy"  class="required">Vacancy </label>
+                        <input [class.is-invalid]="vacancy?.invalid &&
+                        vacancy?.touched" type="number" type="text" class="form-control" id="vacancy" placeholder="Enter Vacancy" formControlName="vacancy">
+                        <div *ngIf="vacancy?.invalid && phoneNumber?.touched">
+                            <small *ngIf="vacancy?.errors?.['required']" class="text-danger">vacancy is required</small>
+                            <small *ngIf="vacancy?.errors?.['minlength']" class="text-danger">vacancy must be {{ vacancy.errors?.["minlength"].requiredLength }} digits.</small>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fileUpload">Upload Job Description(optional)</label>
+                        <input type="file" class="form-control-file" id="fileUpload">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">Post Job</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="sponsor_box">
+        <h2>Sponsors</h2>
+        <p>HCl Technology <br> Over 6,000+ Premium Jobs</p>
+        <hr>
+        <p>TCS <br> Premium Jobs</p>
+        <hr>
+        <p>Infosys <br> Premium Jobs</p>
+        <hr />
+        <p>Amazon <br> Premium Jobs</p>
+        <hr>
+        <p>Accenture <br> Premium Jobs</p>
+        <hr>
+        <p>Flipcart <br> Premium Jobs</p>
+        <hr>
+        <h3>Wise Words</h3>
+        <p><i>"If one advances confidently in the direction of his dreams, and endeavors to live the life which he has
+                imagined,
+                he will meet with a success unexpected in common hours."</i><br> - Henry David Thoreau, writer</p>
+    </div>
+
+</body>
+

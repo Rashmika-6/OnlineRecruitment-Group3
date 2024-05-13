@@ -1,0 +1,85 @@
+<body>
+
+    <div class="container">
+        <h2>Student Registration</h2>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="studentId" class="required">Student ID </label>
+                <input [class.is-invalid]="studentId?.invalid &&
+                studentId?.touched" class="form-control" type="text" id="studentId" name="studentId"
+                    placeholder="Enter Student Id" formControlName="studentId">
+                <div *ngIf="studentId?.invalid && studentId?.touched">
+                    <small *ngIf="studentId?.errors?.['required']" class="text-danger">studentId is required</small>
+                    <small *ngIf="studentId?.errors?.['minlength']" class="text-danger">studentId must be {{
+                        studentId.errors?.["minlength"].requiredLength }} characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="required">Name </label>
+                <input [class.is-invalid]="name?.invalid &&
+                name?.touched" class="form-control" type="text" id="name" name="name" placeholder="Enter your name"
+                    formControlName="name">
+                    <div *ngIf="name?.invalid && name?.touched">
+                        <small *ngIf="name?.errors?.['required']" class="text-danger">name is required</small>
+                        <small *ngIf="name?.errors?.['minlength']" class="text-danger">name must be {{
+                            name.errors?.["minlength"].requiredLength }} characters</small>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile" class="required">Mobile </label>
+                <input  [class.is-invalid]="mobile?.invalid &&
+                mobile?.touched"  type="number" pattern="^\d{10}$" id="mobile" name="mobile" placeholder="Enter mobile number" formControlName="mobile">
+                <div *ngIf="mobile?.invalid && mobile?.touched">
+                    <small class="text-danger" *ngIf="mobile?.errors?.['required']">Phone number is required </small>
+                    <small class="text-danger" *ngIf="mobile?.errors?.['pattern']">Phone number must be 10 digits </small>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="required">Email </label>
+                <input [class.is-invalid]="email?.invalid &&
+                email?.touched"  type="email" id="email" name="email" placeholder="Enter your Email id" formControlName="email">
+                <div *ngIf="email?.invalid && email?.touched">
+                    <small *ngIf="email?.errors?.['required']" class="text-danger">email is required</small>
+                    <small *ngIf="email?.errors?.['minlength']" class="text-danger">email must be valid form</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address </label>
+                <textarea type="text" id="address" name="address" placeholder="Enter your address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="password" class="required">Password </label>
+                <input [class.is-invalid]="password?.invalid &&
+                password?.touched" class="form-control" type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+                <div *ngIf="password?.invalid && password?.touched">
+                    <small *ngIf="password?.errors?.['required']" class="text-danger">password is required</small>
+                    <small *ngIf="password?.errors?.['pattern'] && password?.errors?.['minlength']" class="text-danger">password must be {{
+                        password.errors?.["minlength"].requiredLength }} characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userName" class="required">Username </label>
+                <input [class.is-invalid]="userName?.invalid &&
+                userName?.touched" class="form-control" type="text" type="text" id="userName" name="userName" placeholder="Enter your username" formControlName="userName">
+                <div *ngIf="userName?.invalid && name?.touched">
+                    <small *ngIf="userName?.errors?.['required']" class="text-danger">userName is required</small>
+                    <small *ngIf="userName?.errors?.['minlength']" class="text-danger">userName must be {{
+                        userName.errors?.["minlength"].requiredLength }} characters</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="collegeId" class="required">College ID </label>
+                <input [class.is-invalid]="collegeId?.invalid &&
+                                            collegeId?.touched" class="form-control" type="text" id="collegeId"
+                    name="collegeId" placeholder="Enter your collegeId" formControlName="collegeId">
+                <div *ngIf="collegeId?.invalid && name?.touched">
+                    <small *ngIf="collegeId?.errors?.['required']" class="text-danger">collegeId is required</small>
+                    <small *ngIf="collegeId?.errors?.['minlength']" class="text-danger">collegeId must be {{
+                        collegeId.errors?.["minlength"].requiredLength }} characters</small>
+                </div>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>

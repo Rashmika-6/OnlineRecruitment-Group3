@@ -1,0 +1,72 @@
+<body>
+<div class="container">
+    <form [formGroup]="company" (ngSubmit)="companydata()" class="company-form">
+      <h2><u>Company</u></h2>
+
+      <div class="form-group">
+        <label for="cid">Company Id</label>
+        <input type="number" id="cid" formControlName="cid" class="form-control" placeholder="Enter Company Id" />
+        <div *ngIf="company.get('cid').invalid && (company.get('cid').dirty || company.get('cid').touched)" class="text-danger">
+          <div *ngIf="company.get('cid').errors.required">
+            Company Id is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cname">Company Name</label>
+        <input type="text" id="cname" formControlName="cname" class="form-control" placeholder="Enter Company Name" />
+        <div *ngIf="company.get('cname').invalid && (company.get('cname').dirty || company.get('cname').touched)" class="text-danger">
+          <div *ngIf="company.get('cname').errors.required">
+            Company Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="companyType">Company Type:</label>
+        <select type="text" id="ctype" formControlName="ctype" class="form-control" placeholder="Enter Company Type">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="nonprofit">Non-profit</option>
+        </select>
+        <div *ngIf="company.get('ctype').invalid && (company.get('ctype').dirty || company.get('ctype').touched)" class="text-danger">
+            <div *ngIf="company.get('ctype').errors.required">
+              Company Type is required.
+            </div>
+          </div>
+    </div>
+
+      <!-- <div class="form-group">
+        <label for="ctype">Company Type</label>
+        <input type="text" id="ctype" formControlName="ctype" class="form-control" placeholder="Enter Company Type" />
+        <div *ngIf="company.get('ctype').invalid && (company.get('ctype').dirty || company.get('ctype').touched)" class="text-danger">
+          <div *ngIf="company.get('ctype').errors.required">
+            Company Type is required.
+          </div>
+        </div>
+      </div> -->
+  
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter Company Address" />
+        <div *ngIf="company.get('address').invalid && (company.get('address').dirty || company.get('address').touched)" class="text-danger">
+          <div *ngIf="company.get('address').errors.required">
+            Address is required.
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description" class="form-control" placeholder="Enter Description" />
+        <div *ngIf="company.get('description').invalid && (company.get('description').dirty || company.get('description').touched)" class="text-danger">
+          <div *ngIf="company.get('description').errors.required">
+            Description is required.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>

@@ -1,0 +1,35 @@
+<body>
+    <div class="container">
+        <h2>College Form</h2>
+        <form [formGroup]="collegeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="collegeId" class="required">College ID </label>
+                <input [class.is-invalid]="collegeId?.invalid &&
+                                          collegeId?.touched" type="text" id="collegeId" formControlName="collegeId">
+                <div *ngIf="collegeId?.invalid && collegeId?.touched">
+                    <small *ngIf="collegeId?.errors?.['required']" class="text-danger">collegeId is required</small>
+                    <small *ngIf="collegeId?.errors?.['minlength']" class="text-danger">collegeId must be {{ collegeId.errors?.["minlength"].requiredLength }}</small>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="collegeName" class="required">College Name </label>
+                <input [class.is-invalid]="collegeName?.invalid &&
+                                           collegeName?.touched" type="text" id="collegeName" formControlName="collageName">
+                <div *ngIf="collegeName?.invalid && collegeName?.touched">
+                    <small *ngIf="collegeName?.errors?.['required']" class="text-danger">college Name is required</small>
+                    <small *ngIf="collegeName?.errors?.['minlength']" class="text-danger">college Name must be {{ collegeName.errors?.["minlength"].requiredLength }} characters</small>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="college-description">College Description</label>
+                <textarea id="college-description" name="college-description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="college-address">College Address</label>
+                <textarea id="college-address" name="college-address" required></textarea>
+            </div>
+            <input type="submit"  value="Submit">
+        </form>
+    </div>
+    
+</body>

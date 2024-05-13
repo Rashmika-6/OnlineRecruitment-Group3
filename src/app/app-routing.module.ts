@@ -9,6 +9,12 @@ import { EmailComponent } from './component/email/email.component';
 import { RoletypeComponent } from './component/roletype/roletype.component';
 import { InterfaceComponent } from './component/interface/interface.component';
 import { ContentComponent } from './component/content/content.component';
+import { PostjobComponent } from './component/postjob/postjob.component';
+import { Job4uComponent } from './component/job4u/job4u.component';
+import { StudentComponent } from './component/student/student.component';
+import { CollegeComponent } from './component/college/college.component';
+import { CompanyComponent } from './component/company/company.component';
+
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
@@ -20,7 +26,13 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent },
   { path: 'roletype', component: RoletypeComponent },
   { path: 'interface', component: InterfaceComponent },
-  {path:'content',component:ContentComponent}
+  { path:'content',component:ContentComponent},
+  { path: 'postjob',component:PostjobComponent},
+  { path: 'job4u',component:Job4uComponent},
+  { path: 'student',component:StudentComponent},
+  { path: 'college',component:CollegeComponent},
+  { path: 'company',component:CompanyComponent}
+
 ];
 
 @NgModule({
