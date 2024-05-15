@@ -1,6 +1,6 @@
 <body>
     <h1>Jobs for You </h1>
-    <div class="job-list">
+    <!-- <div class="job-list">
         <div class="job-item">
             <img src="../../../assets/TCS_NewLogo_Final_RGB.png" alt="Company 1 Logo">
             <div class="job-details">
@@ -62,29 +62,31 @@
             </div>
             <button class="apply-btn">Apply</button>
         </div>
-        <div class="job-item">
-            <img src="../../../assets/capgemini.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Capgemini</h2>
-                <p><strong>Job Role:</strong> Web Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Part-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        <div class="job-item">
-            <img src="../../../assets/Cognizant-Logo.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Cognizant</h2>
-                <p><strong>Job Role:</strong> Backend Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Part-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
+       
+       
+    </div> -->
+   <!-- job-list.component.html -->
+<div class="card-container">
+  <div class="card" *ngFor="let job of jobs">
+    <div name="content">
+      <header>
+        <h2>{{job.company}}</h2>
+        <h3>{{ job.jobName }}</h3>
+      </header>
+      <content>
+        <p>Salary: {{ job.salary }}</p>
+        <p>Description: {{ job.jobDescription }}</p>
+        <p>Vacancy: {{ job.vacancy }}</p>
+        <p>Type: {{ job.jobTypeControl }}</p>
+      </content>
+      <div name="btn">
+         <button class="apply-btn" (click)="onSubmit()" color="primary" >Apply</button> 
+      </div>
     </div>
-    <div class="see-more-container">
-        <button id="seeMoreBtn" class="see-more-btn">See More Jobs</button>
-    </div>
+  </div>
+</div>
+
+   
+    
     
     </body>

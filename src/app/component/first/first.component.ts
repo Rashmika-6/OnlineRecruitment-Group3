@@ -64,12 +64,12 @@ export class FirstComponent implements OnInit {
 
     this.router.navigate(['/email']);
 
-    // const userEmail = this.myForm.value.email;
+    const userEmail = this.myForm.value.email;
 
-    // const password = this.myForm.value.pass;
+    const password = this.myForm.value.password;
 
-    // localStorage.setItem('userEmail', userEmail);
-    // localStorage.setItem('userPassword', password);
+    localStorage.setItem('userEmail', userEmail);
+    localStorage.setItem('userPassword', password);
 //console.log(this.myForm.value)
     // this.formDataService.addUser(this.myForm.value).subscribe(
     //   (response) => {

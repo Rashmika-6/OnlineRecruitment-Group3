@@ -3,12 +3,16 @@
     <ul>
       <li><a routerLink="welcome">Online Recruitment</a></li>
     </ul>
-    <ul class="auth-links">
+    <ul *ngIf="!authService.isLoggedIn()" class="auth-links">
       <li><a routerLink="login">Login</a></li>
-      <li><a routerLink="first">Signup</a></li>
+         <li><a routerLink="first">Signup</a></li>
+     
+    </ul>
+    <ul *ngIf="authService.isLoggedIn()" class="auth-links">
+      <li><a (click)="logout()">Logout</a></li>
+      <li><a  routerLink="job4u">Job for You</a></li>
       
-       <!-- <li><a routerLink="email">Email</a></li>
-       <li><a routerLink="roletype">RoleType</a></li> -->
+     
     </ul>
   </nav>
 </header>

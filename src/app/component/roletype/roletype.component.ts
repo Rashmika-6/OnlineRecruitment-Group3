@@ -88,7 +88,7 @@ this.roleId = roleId;
       await emailjs.send(
        'service_1nyzcog', 'template_4o7ao4m',
         {
-          reply_to: reply_to,
+          to_email: reply_to,
           message: this.roleid,
         }
       );

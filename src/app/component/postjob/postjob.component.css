@@ -7,6 +7,10 @@ body{
     /* background-image: url('../../assets/online-recruitment-strategies-1.webp'); 
     background-size: cover; */
     background-color: rgb(13, 13, 241);
+    background-position: center;
+       
+        background-size: cover; 
+        background-attachment: fixed; 
 }
 .job-post-section {
     display: flex;

@@ -1,10 +1,27 @@
 import { Component } from '@angular/core';
+import { Job } from '../../shared/models/job'
+import { HttpClient } from '@angular/common/http';
+import { RecruitmentService } from '../../service/recruitment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job4u',
   templateUrl: './job4u.component.html',
-  styleUrl: './job4u.component.css'
+  styleUrl: './job4u.component.css',
 })
 export class Job4uComponent {
+  jobs: Job[];
 
+  constructor(private http: HttpClient, private service: RecruitmentService, private router:Router) {}
+
+  ngOnInit(): void {
+    this.service.getAllJobs().subscribe((jobs) => {
+      this.jobs = jobs;
+    });
+  }
+  onSubmit() {
+   console.log("submit")
+     this.router.navigate(['/interface']);
+    
+  }
 }

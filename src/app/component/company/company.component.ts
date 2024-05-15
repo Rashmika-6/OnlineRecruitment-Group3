@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -12,7 +13,7 @@ export class CompanyComponent implements OnInit {
 
   company: FormGroup|any;
 
-  constructor(private http: HttpClient, private _route: Router, private fb: FormBuilder) {}
+  constructor(private http: HttpClient, private route: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.company = this.fb.group({
@@ -26,23 +27,31 @@ export class CompanyComponent implements OnInit {
 
   companydata(): void {
     console.log(this.company.value);
+    const companydata = {
+      companyName: this.company.get('cname').value,
+      companyDescription: this.company.get('description').value,
+      companyType: this.company.get('ctype').value,
+      companyAddress: this.company.get('address').value,
+    }
+ this.http
+      .post<any>('http://localhost:8080/addCompany', companydata)
+      .subscribe(
+        (response) => {
+           console.log(response);
+          return response;
+        },
+        (error) => {
+          console.log(error);
+        }
+        
+    );
+     this.route.navigate(['/postjob']);
+      
+    }
+
   
-    this.http.get<any>("http://localhost:3000/register")
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-    });
+   
   
-      if(user){
-        alert('Data Entered Successful');
-        this.company.reset();
-        this._route.navigate(['home']);
-      }else{
-        alert('Wrong Data');
-        this._route.navigate(['company']);
-      }
+      
+    }
   
-    },err=>{
-      alert('Something went wrong');
-    })
-  }
-}

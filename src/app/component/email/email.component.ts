@@ -41,7 +41,7 @@ export class EmailComponent implements OnInit {
     this.generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
     try {
       let response = await emailjs.send('service_1nyzcog', 'template_4o7ao4m', {
-        reply_to: this.myForm.value.email,
+        to_email: this.myForm.value.email,
         message: this.generatedOTP,
         
       });

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -33,19 +34,19 @@ import { CompanyComponent } from './component/company/company.component';
     HeaderComponent,
     ForgotComponent,
     ChangeComponent,
-      EmailComponent,
-      RoletypeComponent,
-      InterfaceComponent,
-      ContentComponent,
-      PostjobComponent,
-      Job4uComponent,
-      StudentComponent,
-      CollegeComponent,
-      CompanyComponent
-      
-      
+    EmailComponent,
+    RoletypeComponent,
+    InterfaceComponent,
+    ContentComponent,
+    PostjobComponent,
+    Job4uComponent,
+    StudentComponent,
+    CollegeComponent,
+    CompanyComponent,
   ], //logical grouping of components
   imports: [
+    MatCardModule,
+    MatButtonModule,
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,

@@ -7,10 +7,15 @@ body {
     margin: 0;
     padding: 0;
     background-image: url(../../../assets/blue.jpg);
-    background-size:cover;
-    background-position: center;
+   
+    
+    
+       /* width:100vh; */
+       height: 100vh;
+        background-size: cover; 
+        background-attachment: fixed; 
 }
-h1{
+/*h1{
     text-align: center;
     color: #ccc;
 }
@@ -38,17 +43,21 @@ h1{
 .job-item h2 {
     margin-top: 0;
     color: #ccc;
-}
+}*/
 .apply-btn,.see-more-btn {
-    background-color: #ccc ;
+    background-color: #210cda ;
     color: black;
     font-size: medium;
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    width: 200px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
+}
+.content{
+        position: relative;
+    gap: 19px;
 }
 .apply-btn:hover,
 .see-more-btn:hover {
@@ -59,4 +68,20 @@ h1{
     margin-top: 20px;
     padding-bottom: 30px;
     padding-top: 20px;
+} 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  
+ 
+    width: 250px;
+    padding: 30px;
+    height: 158px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
 }

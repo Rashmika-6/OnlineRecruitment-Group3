@@ -5,6 +5,15 @@
             <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
                 <div class="form_container">
                     <div class="form-group">
+                        <label for="company"  class="required">Company</label>
+                        <input [class.is-invalid]="company?.invalid &&
+                        company?.touched" type="text"  class="form-control" id="company" placeholder="Enter company name" formControlName="company">
+                        <div *ngIf="company?.invalid && company?.touched">
+                            <small *ngIf="company?.errors?.['required']" class="text-danger">Company name is required</small>
+                            
+                          </div>
+                    </div>
+                    <div class="form-group">
                         <label for="jobName"  class="required">Job Name </label>
                         <input [class.is-invalid]="jobName?.invalid &&
                         jobName?.touched" class="form-control" id="jobName" type="text" placeholder="Enter Job Name" formControlName="jobName">
@@ -22,17 +31,24 @@
                             <small *ngIf="salary?.errors?.['minlength']" class="text-danger">salary must be {{ salary.errors?.["minlength"].requiredLength }} characters</small>
                           </div>
                     </div>
-                    <div class="form-group">
-                        <label for="jobType"  class="required">Job Type </label>
-                        <div class="select-style">
-                            <select class="form-control" id="jobType">
-                                <option selected disabled>Select Job Type</option>
-                                <option>Full Time</option>
-                                <option>Part Time</option>
-                                <option>Internship</option>
-                            </select>
-                        </div>
-                    </div>
+ <div class="form-group">
+    <label for="jobType" class="required">Job Type</label>
+    <div class="select-style">
+        <select formControlName="jobTypeControl" class="form-control" id="jobType" name="jobType" required>
+            <option value="" disabled selected>Select Job Type</option>
+            <option *ngFor="let type of jobTypes" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="jobTypeControl.invalid && (jobTypeControl.dirty || jobTypeControl.touched)" class="text-danger">
+            <div *ngIf="jobTypeControl.errors?.['required']">
+                Please select a job type.
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
                     <div class="form-group">
                         <label for="jobDescription"  class="required">Job Description </label>
                         <textarea [class.is-invalid]="jobDescription?.invalid &&
@@ -43,28 +59,20 @@
                                 <small *ngIf="jobDescription?.errors?.['minlength']" class="text-danger">jobDescription must be {{ jobDescription.errors?.["minlength"].requiredLength }} characters</small>
                               </div>
                     </div>
-                    <div class="form-group">
-                        <label for="phoneNumber"  class="required">Phone Number </label>
-                        <input [class.is-invalid]="phoneNumber?.invalid &&
-                        phoneNumber?.touched" type="number" pattern="^\d{10}$" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber">
-                        <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
-                            <small *ngIf="phoneNumber?.errors?.['required']" class="text-danger">phoneNumber is required</small>
-                            <small *ngIf="phoneNumber?.errors?.['pattern']" class="text-danger">phoneNumber must be 10 digits.</small>
-                          </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label for="vacancy"  class="required">Vacancy </label>
                         <input [class.is-invalid]="vacancy?.invalid &&
                         vacancy?.touched" type="number" type="text" class="form-control" id="vacancy" placeholder="Enter Vacancy" formControlName="vacancy">
-                        <div *ngIf="vacancy?.invalid && phoneNumber?.touched">
+                        <div *ngIf="vacancy?.invalid && vacancy?.touched">
                             <small *ngIf="vacancy?.errors?.['required']" class="text-danger">vacancy is required</small>
                             <small *ngIf="vacancy?.errors?.['minlength']" class="text-danger">vacancy must be {{ vacancy.errors?.["minlength"].requiredLength }} digits.</small>
                           </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="fileUpload">Upload Job Description(optional)</label>
                         <input type="file" class="form-control-file" id="fileUpload">
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary btn-full-width">Post Job</button>
                 </div>
             </form>

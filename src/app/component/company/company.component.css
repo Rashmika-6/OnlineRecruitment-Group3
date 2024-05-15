@@ -9,6 +9,8 @@
     background-color: #f0f8ff; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    height: 100vh;
   }
   
   .company-form h2 {
