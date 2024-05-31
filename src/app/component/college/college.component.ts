@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { RoleService } from '../../role.service';
+import { RecruitmentService } from '../../service/recruitment.service';
 @Component({
   selector: 'app-college',
   templateUrl: './college.component.html',
@@ -10,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class CollegeComponent implements OnInit {
   collegeForm: FormGroup;
   collegeId1: string;
+  roleIdString: number = 0;
+  fetchedRoleData: any;
 
   get collegeId() {
     return this.collegeForm.get('collegeId');
@@ -20,8 +25,11 @@ export class CollegeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private http: HttpClient
+    private route: Router,
+    private http: HttpClient,
+    private router: ActivatedRoute,
+    private service: RecruitmentService,
+    private authData: RoleService
   ) {}
   ngOnInit() {
     this.collegeForm = this.fb.group({
@@ -30,15 +38,34 @@ export class CollegeComponent implements OnInit {
       collegeDesc: ['', [Validators.required]],
       collegeAdd: ['', [Validators.required]],
     });
+    //this.getRoleInfo();
+  }
+  getRoleInfo(): void {
+    this.roleIdString = this.router.snapshot.queryParams['roleid'];
+    console.log(this.roleIdString);
+
+    this.service.getRoleInfoById(this.roleIdString).subscribe({
+      next: (data: any) => {
+        this.fetchedRoleData = data;
+        console.log(this.fetchedRoleData);
+      },
+      error: (error) => {
+        console.error('Error fetching role:', error);
+      },
+    });
   }
 
   onSubmit(): void {
+     const userData = this.authData.getUserData();
+     console.log(userData);
+  
     const collegeId = this.collegeForm.get('collegeId').value;
-   
+
     const collegeData = {
       name: this.collegeForm.get('collegeName').value,
       description: this.collegeForm.get('collegeDesc').value,
       address: this.collegeForm.get('collegeAdd').value,
+      role: userData['role'],
 
       //role:this.roleData,
     };
@@ -47,24 +74,20 @@ export class CollegeComponent implements OnInit {
       .post<any>('http://localhost:8080/addColleges', collegeData)
       .subscribe(
         (response) => {
-           console.log(response);
-           this.collegeId1 = response.collegeId;
-           console.log(this.collegeId1);
-          this.router.navigate(['/student', { collegeId: this.collegeId1 }]);
+          console.log(response);
+          this.collegeId1 = response.collegeId;
+          console.log(this.collegeId1);
+          this.route.navigate(['/job4u', { collegeId: this.collegeId1 }]);
         },
         (error) => {
           console.log(error);
         }
-        
-    );
+      );
     console.log('Form submitted successfully!');
-       console.log(this.collegeId1);
-    
+    console.log(this.collegeId1);
+
     if (this.collegeForm.valid) {
-      
-     
     } else {
-      
       this.markAllAsTouched();
     }
   }

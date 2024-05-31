@@ -25,6 +25,17 @@
                             name.errors?.["minlength"].requiredLength }} characters</small>
                     </div>
             </div>
+             <div class="form-group">
+                <label for="name" class="required">Student College </label>
+                <input [class.is-invalid]="college?.invalid &&
+                name?.touched" class="form-control" type="text" id="collge" name="name" placeholder="Enter your name"
+                    formControlName="college">
+                    <div *ngIf="college?.invalid && college?.touched">
+                        <small *ngIf="college?.errors?.['required']" class="text-danger">college name is required</small>
+                        <small *ngIf="college?.errors?.['minlength']" class="text-danger">name must be {{
+                            name.errors?.["minlength"].requiredLength }} characters</small>
+                    </div>
+            </div>
             <div class="form-group">
                 <label for="mobile" class="required">Mobile </label>
                 <input  [class.is-invalid]="mobile?.invalid &&
@@ -47,7 +58,7 @@
                 <label for="address">Address </label>
                 <textarea type="text" id="address" name="address" placeholder="Enter your address"formControlName="address" required></textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="password" class="required">Password </label>
                 <input [class.is-invalid]="password?.invalid &&
                 password?.touched" class="form-control" type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
@@ -56,7 +67,7 @@
                     <small *ngIf="password?.errors?.['pattern'] && password?.errors?.['minlength']" class="text-danger">password must be {{
                         password.errors?.["minlength"].requiredLength }} characters</small>
                 </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="userName" class="required">Username </label>
                 <input [class.is-invalid]="userName?.invalid &&

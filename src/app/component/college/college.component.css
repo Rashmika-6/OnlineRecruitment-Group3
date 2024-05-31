@@ -6,7 +6,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(../../../assets/edu.jpg);
+    background-image: url(../../../assets/bg6.jpg);
     background-size: cover;
     background-position:center;
     display: flex;
@@ -15,15 +15,20 @@ body {
        width: 100vw;
     height: 100vh;
         background-attachment: fixed; 
+        align-items: center;
+        
 }
 
 .container {
     width: 500px;
+    position:absolute;
+    left:450px;
+    height: fit-content;
     margin: 50px auto; 
     margin-top: 20px;
     margin-left: 20px;
     padding: 20px;
-    background-color: rgb(118, 146, 238);
+    background-color: rgb(208, 131, 93);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(243, 241, 241, 0.1);
 } 
@@ -54,7 +59,7 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: green;
+    background-color: rgb(241, 76, 47);
     color: white;
     padding: 15px 20px;
     border: none;
@@ -65,7 +70,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: rgb(208, 131, 93);
 }
 .required::after {
     content: "*";

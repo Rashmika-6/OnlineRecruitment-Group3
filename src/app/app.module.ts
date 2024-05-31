@@ -23,6 +23,12 @@ import { StudentComponent } from './component/student/student.component';
 import { CollegeComponent } from './component/college/college.component';
 import { CompanyComponent } from './component/company/company.component';
 
+import { AdmindshboardComponent } from './component/admindshboard/admindshboard.component';
+import { AdmindashboardEmployersComponent } from './component/admindashboard-employers/admindashboard-employers.component';
+import { AdmindashboardJobsComponent } from './component/admindashboard-jobs/admindashboard-jobs.component';
+import { AdmindashboardGraduatesComponent } from './component/admindashboard-graduates/admindashboard-graduates.component';
+import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
+
 
 
 @NgModule({
@@ -43,6 +49,13 @@ import { CompanyComponent } from './component/company/company.component';
     StudentComponent,
     CollegeComponent,
     CompanyComponent,
+    
+    AdmindshboardComponent,
+          AdmindashboardEmployersComponent,
+    AdmindashboardJobsComponent,
+          AdmindashboardGraduatesComponent,
+          EmployeeDashboardComponent
+          
   ], //logical grouping of components
   imports: [
     MatCardModule,

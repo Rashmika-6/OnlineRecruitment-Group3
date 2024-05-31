@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { RecruitmentService } from '../../service/recruitment.service';
+import { RoleService } from '../../role.service';
 
 @Component({
   selector: 'app-postjob',
@@ -10,6 +14,8 @@ import { HttpClient } from '@angular/common/http';
 export class PostjobComponent implements OnInit {
   jobForm: FormGroup;
   jobTypeControl: FormControl = new FormControl();
+  roleIdString: number = 0;
+  fetchedRoleData: any;
   jobTypes: string[] = ['Full Time', 'Part Time', 'Internship'];
 
   get jobName() {
@@ -28,7 +34,13 @@ export class PostjobComponent implements OnInit {
     return this.jobForm.get('vacancy');
   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: ActivatedRoute,
+    private service: RecruitmentService,
+    private authData:RoleService
+  ) {}
   ngOnInit() {
     this.jobForm = this.fb.group({
       jobName: ['', [Validators.required, Validators.minLength(5)]],
@@ -38,11 +50,26 @@ export class PostjobComponent implements OnInit {
       vacancy: ['', [Validators.required]],
       jobTypeControl: ['', [Validators.required]],
     });
+    //this.getRoleInfo();
+  }
+  getRoleInfo(): void {
+    this.roleIdString = this.router.snapshot.queryParams['roleid'];
+    console.log(this.roleIdString);
+
+    this.service.getRoleInfoById(this.roleIdString).subscribe({
+      next: (data: any) => {
+        this.fetchedRoleData = data;
+        console.log(this.fetchedRoleData);
+      },
+      error: (error) => {
+        console.error('Error fetching role:', error);
+      },
+    });
   }
   onSubmit(): void {
-    console.log('hello');
-
-    console.log('hello');
+    
+    const userData = this.authData.getUserData();
+    console.log(userData);
     const jobdata = {
       company: this.jobForm.get('company').value,
       jobName: this.jobForm.get('jobName').value,
@@ -50,6 +77,7 @@ export class PostjobComponent implements OnInit {
       description: this.jobForm.get('jobDescription').value,
       salary: this.jobForm.get('salary').value,
       vacancy: this.jobForm.get('vacancy').value,
+      role: userData['role'],
     };
     console.log(jobdata);
     this.http.post<any>('http://localhost:8080/job', jobdata).subscribe(
@@ -60,6 +88,7 @@ export class PostjobComponent implements OnInit {
         console.log(error);
       }
     );
+    alert("Job posted successfully")
     console.log('Form submitted successfully!');
   }
 

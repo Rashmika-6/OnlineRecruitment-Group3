@@ -6,7 +6,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(../../../assets/blue.jpg);
+    background-image: url(../../../assets/bg3.avif);
    
     
     
@@ -45,12 +45,12 @@ body {
     color: #ccc;
 }*/
 .apply-btn,.see-more-btn {
-    background-color: #210cda ;
+    background-color:#004080; ;
     color: black;
     font-size: medium;
     padding: 5px 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
     cursor: pointer;
     width: 70px;
     height: 40px;
@@ -73,6 +73,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+h1{
+    color:white
 }
 
 .card {

@@ -1,0 +1,31 @@
+<div class="subcontainer">
+    <app-admindshboard></app-admindshboard>
+<h2>Employers Information</h2>
+<div class="search-bar">
+  <input type="text" placeholder="Search" />
+  <button>Search</button>
+</div>
+ <table>
+    <thead>
+      <tr>
+        <th>Employer ID</th>
+        <th>Employer Name</th>
+        <th>Employer Email</th>
+        <th>Company Name</th>
+        
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employer of employers">
+        <td>{{ employer.roleId }}</td>
+        <td>{{ employer.userName }}</td>
+        <td>{{ employer.email }}</td>
+        <td>{{ employer.companyName }}</td>
+        <td>
+         
+          <button (click)="deleteEmployer(employer.userId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

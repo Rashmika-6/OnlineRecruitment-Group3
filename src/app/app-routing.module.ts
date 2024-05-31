@@ -14,6 +14,11 @@ import { Job4uComponent } from './component/job4u/job4u.component';
 import { StudentComponent } from './component/student/student.component';
 import { CollegeComponent } from './component/college/college.component';
 import { CompanyComponent } from './component/company/company.component';
+import { AdmindshboardComponent } from './component/admindshboard/admindshboard.component';
+import { AdmindashboardEmployersComponent } from './component/admindashboard-employers/admindashboard-employers.component';
+import { AdmindashboardGraduatesComponent } from './component/admindashboard-graduates/admindashboard-graduates.component';
+import { AdmindashboardJobsComponent } from './component/admindashboard-jobs/admindashboard-jobs.component';
+import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
 
 
 const routes: Routes = [
@@ -25,14 +30,19 @@ const routes: Routes = [
   { path: 'change', component: ChangeComponent },
   { path: 'email', component: EmailComponent },
   { path: 'roletype', component: RoletypeComponent },
-  { path: 'interface', component: InterfaceComponent },
-  { path:'content',component:ContentComponent},
-  { path: 'postjob',component:PostjobComponent},
-  { path: 'job4u',component:Job4uComponent},
-  { path: 'student',component:StudentComponent},
-  { path: 'college',component:CollegeComponent},
-  { path: 'company',component:CompanyComponent}
+  { path: 'interface/:id', component: InterfaceComponent },
 
+  { path: 'content', component: ContentComponent },
+  { path: 'postjob', component: PostjobComponent },
+  { path: 'job4u', component: Job4uComponent },
+  { path: 'student', component: StudentComponent },
+  { path: 'college', component: CollegeComponent },
+  { path: 'company', component: CompanyComponent },
+  { path: 'admin', component: AdmindshboardComponent },
+  { path: 'adminEmployer', component: AdmindashboardEmployersComponent },
+  { path: 'adminGraduate', component: AdmindashboardGraduatesComponent },
+  { path: 'adminJob', component: AdmindashboardJobsComponent },
+  { path: 'employer', component: EmployeeDashboardComponent },
 ];
 
 @NgModule({

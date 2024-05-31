@@ -1,0 +1,127 @@
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  
+}
+
+.navbar {
+  background-color: #0F7173;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.sidebar {
+  background-color: #0F7173;
+  padding: 20px;
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  top: 60px; /* Adjust based on the height of your navbar */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+}
+
+.sidebar ul li a.active, .sidebar ul li a.router-link-active {
+  background-color: #3CCDCF;
+  border-radius: 5px;
+}
+
+.main-content {
+  margin-left: 220px; /* Adjust based on the width of your sidebar */
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 5px;
+  flex: 1;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  background-color: #0F7173;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color:#0F7173;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #0F7173;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #666;
+  color: rgb(214, 25, 25);
+  /* Add any other styles you want for the active link */
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div class="container">
+  <div class="sidebar">
+    <ul>
+      <li><a routerLink="/adminGraduate" routerLinkActive="active">Graduates</a></li>
+      <li><a routerLink="/adminEmployer" routerLinkActive="active">Employers</a></li>
+      <li><a routerLink="/adminJob" routerLinkActive="active">Jobs</a></li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <h2>Welcome to Admin Dashboard </h2>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+</body>
+</html>
+

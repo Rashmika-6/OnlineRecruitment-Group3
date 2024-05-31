@@ -2,17 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { RecruitmentService } from '../../service/recruitment.service';
-import {RoleService } from '../../role.service'
+import { RoleService } from '../../role.service';
 
 import {
   FormControl,
   FormGroup,
   FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,6 +21,7 @@ export class LoginComponent implements OnInit {
   myform: FormGroup;
   roleIdString: number = 0;
   fetchedRoleData: any;
+  roleIdNumber: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -55,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.service.getRoleInfoById(this.roleIdString).subscribe({
       next: (data: any) => {
         this.fetchedRoleData = data;
-       console.log(this.fetchedRoleData);
+        console.log(this.fetchedRoleData);
       },
       error: (error) => {
         console.error('Error fetching role:', error);
@@ -67,113 +66,140 @@ export class LoginComponent implements OnInit {
     const userEmailInput = this.myform.get('email').value;
     const userPasswordInput = this.myform.get('password').value;
     const userRoleIdInput = this.myform.get('role_id').value;
-    console.log(userEmailInput);
-    this.http
-      .post<any>('http://localhost:8080/checkUser', { email: userEmailInput })
-      .subscribe(
-        (response) => {
-          if (response.exists) {
-            if (userRoleIdInput.startsWith('emp')) {
-              console.log('one');
-              this.authService.login();
-              this.router.navigate(['postjob']);
+    if (
+      userEmailInput == 'admin@gmail.com' &&
+      userRoleIdInput == '123' &&
+      userPasswordInput == 'abc'
+    ) {
+      this.authService.login();
+      this.router.navigate(['adminEmployer']);
+    }
+    else {
+      this.http
+        .post<any>('http://localhost:8080/checkUser', { email: userEmailInput })
+        .subscribe(
+          (response) => {
+            console.log(response);
+            if (response.exists) {
+              const numericPart = userRoleIdInput.replace(/\D/g, '');
+              //console.log('Extracted numeric part:', numericPart);  Log the extracted numeric part
+
+              // Convert the numeric part to a number
+              this.roleIdNumber = numericPart ? parseInt(numericPart, 10) : null;
+              console.log(this.roleIdNumber)
+             this.http
+               .get<any>(
+                 `http://localhost:8080/getUserByRoleId/${this.roleIdNumber}`
+               )
+               .subscribe(
+                 (response) => {
+                   console.log(response);
+                   this.authService.saveUserData(response);
+
+                   // Statement 2: This will be executed after role data is fetched
+                   if (userRoleIdInput.startsWith('emp')) {
+                     console.log('one');
+                     this.authService.login();
+                     this.router.navigate(['/employer'], {
+                       queryParams: { roleid: this.roleIdString },
+                     });
+                   } else {
+                     console.log('four');
+                     this.authService.login();
+                     this.router.navigate(['job4u']);
+                   }
+                 },
+                 (error) => {
+                   console.log(error);
+                 }
+               );
             } else {
-              console.log('four');
-              this.authService.login();
-              this.router.navigate(['job4u']);
-            }
-          } else {
-            // User doesn't exist
-
-            const userEmail1 = localStorage.getItem('userEmail');
-            const userPassword1 = localStorage.getItem('userPassword');
-
-            const storedRoleId = localStorage.getItem(userEmail1);
-
-            const userEmailInput = this.myform.get('email').value;
-            const userPasswordInput = this.myform.get('password').value;
-            const userRoleIdInput = this.myform.get('role_id').value;
-            const mobileNum = this.myform.get('mobileNum').value;
-            const userName = this.myform.get('userName').value;
-            if (
-              userEmail1 === userEmailInput &&
-              userPassword1 === userPasswordInput &&
-              storedRoleId === userRoleIdInput
-            ) {
-              const userData = {
-                userName: userName,
-                password: userPasswordInput,
-                mobileNum: mobileNum,
-                email: userEmailInput,
-                role: this.fetchedRoleData,
-
-                //role:this.roleData,
-              };
-              console.log(userData);
-              this.http
-                .post<any>('http://localhost:8080/addUser', userData)
-                .subscribe(
-                  (response) => {
-                    console.log(response);
-                    return response;
-                  },
-                  (error) => {
-                    console.log(error);
-                  }
+              // User doesn't exist
+const userEmailInput = this.myform.get('email').value;
+              const userPassword1 = localStorage.getItem(userEmailInput);
+             
+              const storedRoleId = localStorage.getItem(userEmailInput);
+              
+              const userPasswordInput = this.myform.get('password').value;              
+              const mobileNum = this.myform.get('mobileNum').value;
+              const userName = this.myform.get('userName').value;
+               console.log(storedRoleId, userRoleIdInput);
+              if (
+                
+             
+                storedRoleId == userRoleIdInput
+              ) {
+                const userData = {
+                  userName: userName,
+                  password: userPasswordInput,
+                  mobileNum: mobileNum,
+                  email: userEmailInput,
+                  role: this.fetchedRoleData,
+                };
+                console.log("hello")
+                this.http
+                  .post<any>('http://localhost:8080/addUser', userData)
+                  .subscribe(
+                    (response) => {
+                      console.log(response);
+                      this.authService.saveUserData(response);
+                      return response;
+                    },
+                    (error) => {
+                      console.log(error);
+                    }
                 );
-              if (userRoleIdInput.startsWith('emp')) {
-                this.authService.login();
-                console.log('two');
-                this.router.navigate(['company']);
-              } else {
-                console.log('three');
-                this.authService.login();
-                this.router.navigate(['college']);
+                // const numericPart = userRoleIdInput.replace(/\D/g, '');            
+                // this.roleIdNumber = numericPart
+                //   ? parseInt(numericPart, 10)
+                //   : null;
+                // this.http
+                //   .get<any>(
+                //     `http://localhost:8080/getUserByRoleId/${this.roleIdNumber}`
+                //   )
+                //   .subscribe(
+                //     (response) => {
+                //       console.log(response);
+                //       this.authService.saveUserData(response);
+                //       return response;
+                //     },
+                //     (error) => {
+                //       console.log(error);
+                //     }
+                //   );
+                if (userRoleIdInput.startsWith('emp')) {
+                  this.authService.login();
+                  console.log('two');
+                  this.roleIdString = this.route.snapshot.queryParams['roleId'];
+                  console.log(this.roleIdString);
+                  this.router.navigate(['company'], {
+                    queryParams: { roleid: this.roleIdString },
+                  });
+                } else {
+                  console.log('three');
+                  this.authService.login();
+                  this.roleIdString = this.route.snapshot.queryParams['roleId'];
+                  console.log(this.roleIdString);
+                  this.router.navigate(['student'], {
+                    queryParams: { roleid: this.roleIdString },
+                  });
+                }
               }
             }
-          }
-        },
+          },
 
-        (error) => {
-          console.log(error);
-          alert('Failed to check user existence');
-        }
-      );
+          (error) => {
+            console.log(error);
+            alert('Failed to check user existence');
+          }
+        );
+    }
   }
 
-  // if (
-  //   userEmail1 === userEmailInput &&
-  //   userPassword1 === userPasswordInput &&
-  //   storedRoleId === userRoleIdInput
-  // ) {
-  //   const userData = {
-  //     userName: userName,
-  //     password: userPasswordInput,
-  //     mobileNum: mobileNum,
-  //     email: userEmailInput,
-  //     role: this.fetchedRoleData,
-
-  //     //role:this.roleData,
-  //   };
-  //   console.log(userData);
-  //  this.http.post<any>('http://localhost:8080/addUser', userData).subscribe(
-  //    (response) => {
-  //      console.log(response);
-  //      return response;
-  //    },
-  //    (error) => {
-  //      console.log(error);
-  //    }
-  //  );
-  //   this.router.navigate(['/content']);
-  // } else {
-  //   alert('Login failed');
-  // }
-
-  // this.myform.reset();
+ 
 
   ngOnInit(): void {
-    this.getRoleInfo();
+     this.getRoleInfo();
   }
   get Email(): FormControl {
     return this.myform.get('email') as FormControl;

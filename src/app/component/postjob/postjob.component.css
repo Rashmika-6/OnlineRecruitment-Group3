@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    /* background-image: url('../../assets/online-recruitment-strategies-1.webp'); 
-    background-size: cover; */
+    background-image: url('../../../assets/bg5.jpg'); 
+    background-size: cover; 
     background-color: rgb(13, 13, 241);
     background-position: center;
        
@@ -76,12 +76,12 @@ input[type="file"] {
     border-radius: 10px;
     width: 710px;
     height: 45px;
-    color: #ccc;
+    color: #170202;
     font-size: medium;
   }
   
   .btn-primary {
-    background-color: rgb(13, 13, 241);
+    background-color: rgb(226, 201, 11);
   }
   
   .btn-primary:hover {
@@ -103,12 +103,12 @@ input[type="file"] {
 .sponsor_box h2 {
     margin-bottom: 20px;
     font-size: 45px;
-    color: white;
+    color: black;
 }
 .sponsor_box h3 {
     margin-bottom: 20px;
     font-size: 35px;
-    color: white;
+    color: black;
 }
 
 .sponsor_box p{
@@ -116,7 +116,7 @@ input[type="file"] {
     margin-bottom: 10px;
     font-size: 20px;
     font-family:cursive;
-    color: white;
+    color: black;
     padding-left: 60px;
 }
 .sponsor_box hr{

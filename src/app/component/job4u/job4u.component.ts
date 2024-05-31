@@ -12,16 +12,23 @@ import { Router } from '@angular/router';
 export class Job4uComponent {
   jobs: Job[];
 
-  constructor(private http: HttpClient, private service: RecruitmentService, private router:Router) {}
+  constructor(
+    private http: HttpClient,
+    private service: RecruitmentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.service.getAllJobs().subscribe((jobs) => {
       this.jobs = jobs;
     });
   }
-  onSubmit() {
-   console.log("submit")
-     this.router.navigate(['/interface']);
-    
+ 
+  applyJob(jobId: number) {
+    console.log(jobId)
+    this.router.navigate(['interface', jobId]);
   }
+
+
+  
 }
