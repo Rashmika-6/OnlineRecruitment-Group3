@@ -82,13 +82,13 @@ export class RoletypeComponent implements OnInit {
   async sendEmail(reply_to: string) {
     try {
       console.log(this.roleid);
-      // await emailjs.send(
-      //  'service_1nyzcog', 'template_4o7ao4m',
-      //   {
-      //     to_email: reply_to,
-      //     message: this.roleid,
-      //   }
-      // );
+      await emailjs.send(
+       'service_1nyzcog', 'template_4o7ao4m',
+        {
+          to_email: reply_to,
+          message: this.roleid,
+        }
+      );
 
       alert('Email sent successfully!');
     } catch (error) {
@@ -100,6 +100,7 @@ export class RoletypeComponent implements OnInit {
         roleId: this.roleId,
         //id: this.id,
       },
+      replaceUrl: true,
     });
   }
 

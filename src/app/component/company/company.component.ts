@@ -78,8 +78,9 @@ export class CompanyComponent implements OnInit {
     console.log(this.roleIdString);
     this.route.navigate(['/employer'], {
       queryParams: { roleid: this.roleIdString },
+      replaceUrl: true,
     });
   }
-  
+
 }
   

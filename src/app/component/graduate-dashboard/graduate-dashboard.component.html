@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style> body{
+       height:100vh;
+        background-image: url(../../../assets/bg2.avif);
+        background-position: center;
+       
+        background-size: cover; 
+        background-attachment: fixed; 
+      }</style>
+ </head>
+ <body>
+  <h1>Appointments</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Appointment Id</th>
+        <th>Graduate Name</th>
+        <th>Graduate ID</th>
+        <th>Graduate email</th>
+        <th>College Name</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointmentData">
+        <td>{{ appointment.appointmentId }}</td>
+        <td>{{ appointment.student.studentName }}</td>
+       <td>{{  appointment.student.role.roleId }}</td>
+        <td>{{ appointment.student.studentEmail }}</td>
+        <td>{{  appointment.student.studentCollege}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <!-- <h1>Job Posted</h1> -->
+  <!-- <table>
+    <thead>
+      <tr>
+        <th>Job name</th>
+        <th>Salary</th>
+        <th>Vacancy</th>
+         <th>Actions</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>{{ job.jobName }}</td>
+        <td>{{ job.salary}}</td>
+       <td>{{  job.vacancy }}</td>
+        
+        <td>      <button (click)="deleteJob(job.jobId)">Delete</button>
+</td>
+    </tbody>
+  </table>--><br><br> 
+
+<button style="padding: 20px;border-radius: 10px; align-self: center;"[routerLink]="['/job4u']">Search Jobs</button>
+ </body> 
+ </html>
+ 
+ 
+

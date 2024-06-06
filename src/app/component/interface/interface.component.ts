@@ -119,7 +119,7 @@ export class InterfaceComponent {
                 console.log(response);
                 this.appointmentData=response
                 const email = userData['email'];
-                //this.sendEmail(email, jobResponse,this.appointmentData); // Pass jobResponse here
+                this.sendEmail(email, jobResponse,this.appointmentData); // Pass jobResponse here
                 alert("Successfully applied for the job")
                 console.log(email);
               },
@@ -138,37 +138,37 @@ export class InterfaceComponent {
     emailjs.init('dyuvbtv5Atr5Olu1O');
   }
 
-// async sendEmail(to_email: string, jobResponse: any,appointmentData:any) { 
-//       try {
-//         await emailjs.send('service_hqmp8ll', 'template_5e037xa', {
-//           position: jobResponse['jobName'],
-//           company: jobResponse['company'],
-//           to_email: to_email,
-//         });
+async sendEmail(to_email: string, jobResponse: any,appointmentData:any) { 
+      try {
+        await emailjs.send('service_hqmp8ll', 'template_5e037xa', {
+          position: jobResponse['jobName'],
+          company: jobResponse['company'],
+          to_email: to_email,
+        });
 
-//         await emailjs.send('service_hqmp8ll', 'template_6ypquze', {
-//           company: jobResponse['company'],
-//           jobId: jobResponse['jobId'],
-//           jobName: jobResponse['jobName'],
-//           jobTypeControl: jobResponse['jobTypeControl'],
-//           description: jobResponse['description'],
-//           salary: jobResponse['salary'],
-//           vacancy: jobResponse['vacancy'],
-//           studentname: appointmentData['studentName'],
-//           email: to_email,
-//           phoneNo: appointmentData['phoneNo'],
-//           yop: appointmentData['yop'],
-//           percentage: appointmentData['percentage'],
-//           projects: appointmentData['projects'],
-//           to_email: to_email,
-//         });
+        await emailjs.send('service_hqmp8ll', 'template_6ypquze', {
+          company: jobResponse['company'],
+          jobId: jobResponse['jobId'],
+          jobName: jobResponse['jobName'],
+          jobTypeControl: jobResponse['jobTypeControl'],
+          description: jobResponse['description'],
+          salary: jobResponse['salary'],
+          vacancy: jobResponse['vacancy'],
+          studentname: appointmentData['studentName'],
+          email: to_email,
+          phoneNo: appointmentData['phoneNo'],
+          yop: appointmentData['yop'],
+          percentage: appointmentData['percentage'],
+          projects: appointmentData['projects'],
+          to_email: to_email,
+        });
 
-//         alert('Thank you for registering to the job');
-//       } catch (error) {
-//         console.error('Failed to send email:', error);
-//         alert('Failed to send email. Please try again later.');
-//       }
+        alert('Thank you for registering to the job');
+      } catch (error) {
+        console.error('Failed to send email:', error);
+        alert('Failed to send email. Please try again later.');
+      }
     
-//     }
+    }
   }
 

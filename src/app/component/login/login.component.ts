@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
       userPasswordInput == 'abc'
     ) {
       this.authService.login();
-      this.router.navigate(['adminEmployer']);
+      this.router.navigate(['adminEmployer'], { replaceUrl: true });
     }
     else {
       this.http
@@ -102,11 +102,12 @@ export class LoginComponent implements OnInit {
                      this.authService.login();
                      this.router.navigate(['/employer'], {
                        queryParams: { roleid: this.roleIdString },
+                       replaceUrl: true,
                      });
                    } else {
                      console.log('four');
                      this.authService.login();
-                     this.router.navigate(['job4u']);
+                     this.router.navigate(['/graduate', { replaceUrl: true }]);
                    }
                  },
                  (error) => {
@@ -174,6 +175,7 @@ const userEmailInput = this.myform.get('email').value;
                   console.log(this.roleIdString);
                   this.router.navigate(['company'], {
                     queryParams: { roleid: this.roleIdString },
+                    replaceUrl: true,
                   });
                 } else {
                   console.log('three');
@@ -182,6 +184,7 @@ const userEmailInput = this.myform.get('email').value;
                   console.log(this.roleIdString);
                   this.router.navigate(['student'], {
                     queryParams: { roleid: this.roleIdString },
+                    replaceUrl: true,
                   });
                 }
               }

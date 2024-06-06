@@ -19,6 +19,10 @@ import { AdmindashboardEmployersComponent } from './component/admindashboard-emp
 import { AdmindashboardGraduatesComponent } from './component/admindashboard-graduates/admindashboard-graduates.component';
 import { AdmindashboardJobsComponent } from './component/admindashboard-jobs/admindashboard-jobs.component';
 import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { GraduateDashboardComponent } from './component/graduate-dashboard/graduate-dashboard.component';
+import { InboxComponent } from './component/inbox/inbox.component';
+import { OutboxComponent } from './component/outbox/outbox.component';
 
 
 const routes: Routes = [
@@ -43,6 +47,11 @@ const routes: Routes = [
   { path: 'adminGraduate', component: AdmindashboardGraduatesComponent },
   { path: 'adminJob', component: AdmindashboardJobsComponent },
   { path: 'employer', component: EmployeeDashboardComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'graduate', component: GraduateDashboardComponent },
+  { path: 'inbox', component: InboxComponent },
+  { path: 'outbox', component: OutboxComponent },
+
 ];
 
 @NgModule({

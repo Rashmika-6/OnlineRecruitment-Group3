@@ -15,8 +15,11 @@
      
     </ul>
     <ul *ngIf="authService.isLoggedIn()" class="auth-links">
-      <li><a (click)="logout()">Logout</a></li>
+          <li><a  routerLink="Meassage Box">Contact Us</a></li>
+     
       <li><a  routerLink="job4u">Job for You</a></li>
+       <li><a (click)="logout()">Logout</a></li>
+   
       
      
     </ul>

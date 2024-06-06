@@ -26,7 +26,7 @@ export class Job4uComponent {
  
   applyJob(jobId: number) {
     console.log(jobId)
-    this.router.navigate(['interface', jobId]);
+    this.router.navigate(['interface', jobId], { replaceUrl: true });
   }
 
 

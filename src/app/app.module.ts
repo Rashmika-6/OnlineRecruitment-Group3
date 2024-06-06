@@ -28,6 +28,10 @@ import { AdmindashboardEmployersComponent } from './component/admindashboard-emp
 import { AdmindashboardJobsComponent } from './component/admindashboard-jobs/admindashboard-jobs.component';
 import { AdmindashboardGraduatesComponent } from './component/admindashboard-graduates/admindashboard-graduates.component';
 import { EmployeeDashboardComponent } from './component/employee-dashboard/employee-dashboard.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { GraduateDashboardComponent } from './component/graduate-dashboard/graduate-dashboard.component';
+import { InboxComponent } from './component/inbox/inbox.component';
+import { OutboxComponent } from './component/outbox/outbox.component';
 
 
 
@@ -54,7 +58,11 @@ import { EmployeeDashboardComponent } from './component/employee-dashboard/emplo
           AdmindashboardEmployersComponent,
     AdmindashboardJobsComponent,
           AdmindashboardGraduatesComponent,
-          EmployeeDashboardComponent
+          EmployeeDashboardComponent,
+          ContactComponent,
+          GraduateDashboardComponent,
+          InboxComponent,
+          OutboxComponent
           
   ], //logical grouping of components
   imports: [

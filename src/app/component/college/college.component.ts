@@ -77,7 +77,9 @@ export class CollegeComponent implements OnInit {
           console.log(response);
           this.collegeId1 = response.collegeId;
           console.log(this.collegeId1);
-          this.route.navigate(['/job4u', { collegeId: this.collegeId1 }]);
+          this.route.navigate(['/job4u', { collegeId: this.collegeId1 }], {
+            replaceUrl: true, // This will replace the current URL in the history
+          });
         },
         (error) => {
           console.log(error);

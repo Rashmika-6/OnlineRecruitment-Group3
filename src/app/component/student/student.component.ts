@@ -127,12 +127,13 @@ export class StudentComponent implements OnInit {
       console.log(this.roleIdString);
       this.router.navigate(['college'], {
         queryParams: { roleid: this.roleIdString },
+        replaceUrl: true,
       });
     });
     if (this.studentForm.valid) {
       // Handle form submission logic here
       console.log('Form submitted successfully!');
-      this.router.navigate(['/college']);
+      this.router.navigate(['/college'], { replaceUrl: true });
     } else {
       // Mark all fields as touched to display validation messages
       this.markAllAsTouched();

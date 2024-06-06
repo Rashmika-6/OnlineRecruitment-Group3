@@ -40,17 +40,17 @@ export class EmailComponent implements OnInit {
     emailjs.init('1rY5oNPpZKkxDy-sQ');
     this.generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
     console.log(this.generatedOTP)
-    try {
-      // // let response = await emailjs.send('service_1nyzcog', 'template_4o7ao4m', {
-      // //   to_email: this.myForm.value.email,
-      // //   message: this.generatedOTP,
+    // try {
+    //   let response = await emailjs.send('service_1nyzcog', 'template_4o7ao4m', {
+    //     to_email: this.myForm.value.email,
+    //     message: this.generatedOTP,
         
-      // });
-      alert('OTP sent successfully! Please check your inbox.');
-    } catch (error) {
-      console.error('Failed to send OTP:', error);
-      alert('Failed to send OTP. Please try again later.');
-    }
+    //   });
+    //   alert('OTP sent successfully! Please check your inbox.');
+    // } catch (error) {
+    //   console.error('Failed to send OTP:', error);
+    //   alert('Failed to send OTP. Please try again later.');
+    // }
   }
 
   verifyOTP() {
@@ -63,6 +63,7 @@ export class EmailComponent implements OnInit {
       alert('OTP verification successful!');
        this.router.navigate(['/roletype'], {
          queryParams: { reply_to: this.myForm.value.email },
+         replaceUrl: true,
        });
    
       

@@ -62,7 +62,7 @@ export class FirstComponent implements OnInit {
     //   return; // Stop further execution if any field is empty
     // }
 
-    this.router.navigate(['/email']);
+    this.router.navigate(['/email'], { replaceUrl: true });
 
     const userEmail = this.myForm.value.email;
 
