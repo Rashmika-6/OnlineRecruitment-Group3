@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-admindashboard-graduates',
   templateUrl: './admindashboard-graduates.component.html',
-
   styleUrl: './admindashboard-graduates.component.css',
 })
 export class AdmindashboardGraduatesComponent implements OnInit {

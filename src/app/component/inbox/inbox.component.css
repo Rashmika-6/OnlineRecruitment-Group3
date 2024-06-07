@@ -1,0 +1,21 @@
+*{
+    /* padding:0px; */
+    margin: 0px; 
+}
+body{
+ height: 100vh;
+ background-image: url("https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y=");
+ background-position: center; 
+ background-repeat: no-repeat;
+ background-size: cover; 
+ }
+.text-center{
+    color: white;
+    text-align: center;
+    font-size: 58px;
+}
+.list-group-item{
+    color: black;
+    font-size: 35px;
+    /* text-align: center; */
+}
