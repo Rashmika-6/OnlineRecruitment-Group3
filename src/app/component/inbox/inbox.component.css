@@ -19,3 +19,20 @@ body{
     font-size: 35px;
     /* text-align: center; */
 }
+.list-group a{
+    font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+li {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+

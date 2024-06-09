@@ -22,7 +22,8 @@
         <th>Graduate Name</th>
         <th>Graduate ID</th>
         <th>Graduate email</th>
-        <th>College Name</th>
+        
+        <th>Actions</th>
         
         
       </tr>
@@ -30,11 +31,15 @@
     <tbody>
       <tr *ngFor="let appointment of appointmentData">
         <td>{{ appointment.appointmentId }}</td>
-        <td>{{ appointment.student.studentName }}</td>
-       <td>{{  appointment.student.role.roleId }}</td>
-        <td>{{ appointment.student.studentEmail }}</td>
-        <td>{{  appointment.student.studentCollege}}</td>
+        <td>{{ appointment.student?.studentName }}</td>
+       <td>{{  appointment.student?.studentId }}</td>
+        <td>{{ appointment.student?.studentEmail }}</td>
         
+         <td>      <button (click)="downloadResume(appointment.appointmentId)">Download Resume</button>
+
+      <button class="btn-success"  (click)="accept(appointment)">Accept</button>
+      <button class="btn-danger" (click)="reject(appointment)">Reject</button>
+</td>
       </tr>
     </tbody>
   </table>
@@ -57,6 +62,8 @@
        <td>{{  job.vacancy }}</td>
         
         <td>      <button (click)="deleteJob(job.jobId)">Delete</button>
+
+      <button (click)="updateJob(job)">Update</button>
 </td>
     </tbody>
   </table><br><br>

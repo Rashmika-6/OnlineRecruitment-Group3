@@ -1,0 +1,36 @@
+<head>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+   <div class="card-container">
+  <div class="search-container search-bar" style="margin-top: 100px;position: fixed; top: 0; width: 80%;  padding: 10px; z-index: 1;">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by job title,salary or location">
+    <button (click)="searchJobs()">Search By Job Title</button>
+    <button (click)="searchJobs()">Search By Salary</button>
+     <button (click)="searchJobs()">Search By Job Location</button>
+  </div>
+ <div *ngIf="filteredJobs.length == 0">
+  <p style="color:white; margin-top: 10px;">No jobs found matching your search criteria.</p>
+</div>
+<div class="card" *ngFor="let job of filteredJobs">
+  <div name="content">
+    <header>
+      <h2>{{job.company}}</h2>
+      <h3>{{ job.jobName }}</h3>
+    </header>
+    <content>
+      <p>Salary: {{ job.salary }}</p>
+      <p>Description: {{ job.description}}</p>
+      <p>Vacancy: {{ job.vacancy }}</p>
+      <p>Location: {{ job.location }}</p>
+      <p>Type: {{ job.jobTypeControl }}</p>
+    </content>
+    <div name="btn">
+      <button class="apply-btn" (click)="applyJob(job.jobId)" color="primary">Apply</button>
+    </div>
+  </div>
+</div>
+  
+</div>
+  
+    </body>

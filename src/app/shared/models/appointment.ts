@@ -1,7 +1,6 @@
 export class Appointment {
   appointmentId?: number; 
-  student: Student;
-  role: Role;
+  
   studentName: string;
   email: string;
   language: string;

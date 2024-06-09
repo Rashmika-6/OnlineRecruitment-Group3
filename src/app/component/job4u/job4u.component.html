@@ -1,82 +1,27 @@
+<head>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
 <body>
-    <h1>Jobs for You </h1>
-    <!-- <div class="job-list">
-        <div class="job-item">
-            <img src="../../../assets/TCS_NewLogo_Final_RGB.png" alt="Company 1 Logo">
-            <div class="job-details">
-                <h2>Tata Consultancy Services Limited(TCS)</h2>
-                <p><strong>Job Role:</strong> Frontend Developer</p>
-                <p><strong>Skills:</strong> HTML, CSS, JavaScript</p>
-                <p><strong>Job Type:</strong> Full-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        
-        <div class="job-item">
-            <img src="../../../assets/infosys.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Infosys Company</h2>
-                <p><strong>Job Role:</strong> Backend Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Part-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        <div class="job-item">
-            <img src="../../../assets/Accenture-1.png" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Accenture</h2>
-                <p><strong>Job Role:</strong> Full Stack Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Intership </p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        <div class="job-item">
-            <img src="../../../assets/google.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Google</h2>
-                <p><strong>Job Role:</strong> Backend Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Part-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        <div class="job-item">
-            <img src="../../../assets/micro.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Microsoft</h2>
-                <p><strong>Job Role:</strong> Backend Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Full-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-        <div class="job-item">
-            <img src="../../../assets/R.jpg" alt="Company 2 Logo">
-            <div class="job-details">
-                <h2>Google</h2>
-                <p><strong>Job Role:</strong> Backend Developer</p>
-                <p><strong>Skills:</strong> Python, Django, SQL</p>
-                <p><strong>Job Type:</strong> Part-time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-       
-       
-    </div> -->
-   <!-- job-list.component.html -->
+    <div style="text-align: center; display: ruby-text
+"><h1 >Jobs for You </h1><div style="margin-left: 30px;">
+
+<i  class="fa-sharp fa-solid fa-magnifying-glass fa-lg" style="color: #ffffff;"><a routerLink="/search" style="text-decoration: none;color: white; ">  Search jobs</a></i></div></div>
+     
+   
 <div class="card-container">
   <div class="card" *ngFor="let job of jobs">
     <div name="content">
       <header>
+
+
         <h2>{{job.company}}</h2>
         <h3>{{ job.jobName }}</h3>
       </header>
       <content>
         <p>Salary: {{ job.salary }}</p>
-        <p>Description: {{ job.jobDescription }}</p>
+        <p>Description: {{ job.description}}</p>
         <p>Vacancy: {{ job.vacancy }}</p>
+        <p>Location: {{ job.location }}</p>
         <p>Type: {{ job.jobTypeControl }}</p>
       </content>
       <div name="btn">

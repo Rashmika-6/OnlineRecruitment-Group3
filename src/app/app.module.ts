@@ -32,6 +32,8 @@ import { ContactComponent } from './component/contact/contact.component';
 import { GraduateDashboardComponent } from './component/graduate-dashboard/graduate-dashboard.component';
 import { InboxComponent } from './component/inbox/inbox.component';
 import { OutboxComponent } from './component/outbox/outbox.component';
+import { SearchComponent } from './component/search/search.component';
+import { UpdatejobComponent } from './component/updatejob/updatejob.component';
 
 
 
@@ -62,7 +64,9 @@ import { OutboxComponent } from './component/outbox/outbox.component';
           ContactComponent,
           GraduateDashboardComponent,
           InboxComponent,
-          OutboxComponent
+          OutboxComponent,
+          SearchComponent,
+          UpdatejobComponent
           
   ], //logical grouping of components
   imports: [

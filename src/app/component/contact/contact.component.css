@@ -5,26 +5,26 @@
 body{
     overflow-x: hidden;
         height: 100vh;
-        background-image: url("../../../assets/OIP\ \(1\).jpg");
+        background-image: url("https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y=");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
 }
-#bg-div{
+/* #bg-div{
     margin: 0;
     margin-top:30px;
     margin-bottom:50px;
-}
-#border-btm{
+} */
+/* #border-btm{
     padding-bottom: 20px;
     margin-bottom: 0px;
     box-shadow: 0px 35px 2px -35px lightgray;
 }
 
-.active1{
+/* .active1{
     color: rgb(6, 199, 6) !important;
     font-weight: bold;
-}
+} */
 .bar4{
     width: 35px;
     height: 5px;
@@ -37,14 +37,7 @@ body{
 #menu-toggle{
     height: 50px;
 }
-#sidebar-wrapper{
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-}
+
 #sidebar-wrapper .sidebar-heading{
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
@@ -88,7 +81,7 @@ body{
     font-weight: bold;
     font-size: 20px;
 }
-.form-card input, .form-card textarea{
+/* .form-card input, .form-card textarea{
     padding: 10px 15px 5px 15px;
     border: none;
     border: 1px solid lightgrey;
@@ -109,8 +102,8 @@ body{
     font-weight: bold;
     border: 1px solid skyblue;
     outline-width: 0;
-}
-input.btn-success{
+} */
+/* input.btn-success{
     height: 50px;
     color: #ffffff;
     opacity: 0.9;
@@ -150,4 +143,54 @@ color: red;
 }
 input:focus + label{
     color: #1E88E5
+} */
+/* Custom Styles for the Form */
+.form-container {
+  margin: 20px;
 }
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+}
+
+.text-danger {
+  color: #e74c3c;
+  margin-top: 5px;
+} 
+
+.btn.placeicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.placeicon::before {
+  content: "\f1d8"; /* Font Awesome envelope icon */
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    margin: 10px;
+  }
+
+  .btn.placeicon::before {
+    margin-right: 4px;
+  }
+}
+

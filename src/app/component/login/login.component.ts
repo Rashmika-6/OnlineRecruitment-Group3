@@ -35,7 +35,15 @@ export class LoginComponent implements OnInit {
       userName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       role_id: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'
+          ),
+        ],
+      ],
       mobileNum: [
         '',
         [
@@ -69,8 +77,9 @@ export class LoginComponent implements OnInit {
     if (
       userEmailInput == 'admin@gmail.com' &&
       userRoleIdInput == '123' &&
-      userPasswordInput == 'abc'
+      userPasswordInput == 'Admin@123'
     ) {
+      localStorage.setItem("Admin", "1");
       this.authService.login();
       this.router.navigate(['adminEmployer'], { replaceUrl: true });
     }

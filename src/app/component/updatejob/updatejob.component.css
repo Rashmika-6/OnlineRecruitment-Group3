@@ -1,0 +1,133 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('../../../assets/bg5.jpg'); 
+    background-size: cover; 
+    background-color: rgb(13, 13, 241);
+    background-position: center;
+       
+        background-size: cover; 
+        background-attachment: fixed; 
+}
+.job-post-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+
+.apply_box{
+    max-width: 950px;
+    padding: 5px;
+    background-color: rgba(191, 222, 247, 0.952);
+    margin: 0 auto;
+    margin-left: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.1);
+    border-radius: 10px;
+}
+
+.form_container {
+   padding: 7px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-size: 20px;
+}
+
+input[type="file"] {
+    width: auto;
+}
+.text-danger{
+    color: red;
+}
+
+/* Add some spacing between form groups */
+.form_container .form-group:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.btn {
+    border-radius: 10px;
+    width: 710px;
+    height: 45px;
+    color: #170202;
+    font-size: medium;
+  }
+  
+  .btn-primary {
+    background-color: rgb(226, 201, 11);
+  }
+  
+  .btn-primary:hover {
+    background-color:  rgb(84, 210, 233);
+    cursor: pointer;
+    color: black;
+    font-size: medium;
+}
+.job-post-section {
+    padding: 30px 0;
+} 
+
+.sponsor_box {
+    padding: 10px;
+    border-radius: 10px;
+    padding-left: 40px;
+} 
+
+.sponsor_box h2 {
+    margin-bottom: 20px;
+    font-size: 45px;
+    color: black;
+}
+.sponsor_box h3 {
+    margin-bottom: 20px;
+    font-size: 35px;
+    color: black;
+}
+
+.sponsor_box p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family:cursive;
+    color: black;
+    padding-left: 60px;
+}
+.sponsor_box hr{
+    color: white; 
+    padding-left: 60px;  
+}
+.required::after {
+    content: "*";
+    color: red;
+}
+
+
+
+

@@ -326,13 +326,14 @@
                   />
                 </div>
 
-                <!-- Resume Field -->
+          
                 <div class="form-group col-md-10">
                   <label for="resumeFile">Upload your resume</label><br />
                   <input
                     type="file"
                     id="resumeFile"
                     class="form-control"
+                     (change)="onFileSelected($event)"
                     formControlName="resumeFile"
                   />
                   <!-- Validation Messages for File Field -->
@@ -348,6 +349,7 @@
                     </div>
                   </div>
                 </div>
+                <button type="button" class="btn btn-success" (click)="onUpload()">Upload</button>
               </div>
 
               <!-- Submit Button -->

@@ -1,19 +1,37 @@
-*{ 
-    height: 100vh;
-    background-image: url("https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y=");
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+*{
+    /* padding:0px; */
+    margin: 0px; 
 }
-.card-header{
+body{
+ height: 100vh;
+ background-image: url("https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y=");
+ background-position: center; 
+ background-repeat: no-repeat;
+ background-size: cover; 
+ }
+.text-center{
+    color: white;
     text-align: center;
-    color: white;
-    font-size: 56px;
+    font-size: 58px;
 }
-.card-body{
-    color: white;
-    width: 20rem;
-    height: 25rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 2, 0, 2);
+.list-group-item{
+    color: black;
+    font-size: 35px;
+    /* text-align: center; */
 }
+.list-group a{
+    font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+li {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+/* https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y= */

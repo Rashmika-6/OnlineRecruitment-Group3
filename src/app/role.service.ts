@@ -12,7 +12,12 @@ export class RoleService {
   }
 
   logout() {
-    this.isAuthenticated = false;
+    if (localStorage.getItem('Admin') === '1') {
+      localStorage.setItem('Admin', '0');
+      this.isAuthenticated = false;
+    } else {
+      this.isAuthenticated = false;
+    }
   }
 
   isLoggedIn() {

@@ -23,6 +23,8 @@ import { ContactComponent } from './component/contact/contact.component';
 import { GraduateDashboardComponent } from './component/graduate-dashboard/graduate-dashboard.component';
 import { InboxComponent } from './component/inbox/inbox.component';
 import { OutboxComponent } from './component/outbox/outbox.component';
+import { SearchComponent } from './component/search/search.component';
+import { UpdatejobComponent } from './component/updatejob/updatejob.component';
 
 
 const routes: Routes = [
@@ -51,7 +53,8 @@ const routes: Routes = [
   { path: 'graduate', component: GraduateDashboardComponent },
   { path: 'inbox', component: InboxComponent },
   { path: 'outbox', component: OutboxComponent },
-
+  { path: 'search', component: SearchComponent },
+  { path: 'updatejob', component: UpdatejobComponent },
 ];
 
 @NgModule({

@@ -44,7 +44,7 @@
     background-color: #f2f2f2;
   }
   
-  button {
+  .b1 {
     padding: 5px 10px;
     margin-right: 5px;
     background-color: #004080;
@@ -91,12 +91,18 @@
     background-color: #f2f2f2;
   }
   
-  button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    background-color: #004080;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
+
+  .btn-green {
+  background-color: green !important;
+  color: white !important;
+}
+
+.btn-red {
+  background-color: red !important;
+  color: white !important;
+}
+
+.btn-white {
+  background-color: white !important;
+  color: black !important;
+}

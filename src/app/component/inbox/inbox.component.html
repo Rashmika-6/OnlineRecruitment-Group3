@@ -45,6 +45,16 @@
   <li class="nav-item">
     <a class="nav-link"  routerLink="/outbox">Sent</a>
   </li>
+   <ul class="list-group">
+            <li class="list-group-item" *ngFor="let message of inboxMessages">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">From: {{ message.sender }}</h5>
+                <small>{{ message.date }}</small>
+              </div>
+              <p class="mb-1">{{ message.message }}</p>
+            </li>
+            <li class="list-group-item" *ngIf="inboxMessages.length === 0">No messages found.</li>
+          </ul>
  
  
 </ul>
@@ -54,7 +64,7 @@
   
 </body>
 </html>
- -->
+
 
 <body>
  <div class="container m-4">
@@ -78,4 +88,82 @@
     </div>
   </div>
 </div>
+</body> -->
+<head>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  />
+  <!-- <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+  /> -->
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container-fluid px-0" id="bg-div">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-12">
+        <div class="card card0" style="top:140px;border-radius: 20px;">
+          <div class="d-flex" id="wrapper">
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+              
+            <div class="list-group list-group-flush">
+                 <a
+                  data-toggle="tab"
+                  routerLink="/contact"
+                  id="tab1"
+                  class="tabs list-group-item bg-light"
+                >
+                  <div class="list-div my-2">
+                    <div class="fa-solid fa-message"></div>
+                    &nbsp;&nbsp; Type message
+                  </div>
+                </a>
+                <a
+                  data-toggle="tab"
+                  routerLink="/inbox"
+                  id="tab1"
+                  class="tabs list-group-item bg-light"
+                >
+                  <div class="list-div my-2">
+                    <i class="fa-regular fa-comment"></i>
+                    &nbsp;&nbsp; Inbox
+                  </div>
+                </a>
+                <a
+                  data-toggle="tab"
+                  routerLink="/outbox"
+                  id="tab2"
+                  class="tabs list-group-item active1"
+                >
+                  <div class="list-div my-2">
+                    <i class="fa-regular fa-envelope"></i>
+                    &nbsp;&nbsp; sent
+                  </div>
+                </a>
+              </div>
+            </div>
+            
+  <ul>
+    <li *ngFor="let message of inboxMessages">
+      <div></div>
+      <strong>From:</strong> {{ message.senderEmail }}<br />
+      <strong>To:</strong> {{ message.receiverEmail }}<br />
+      <strong>Message:</strong> {{ message.message }}<br />
+      <strong>Date:</strong> {{ message.date }}
+    </li>
+    <li class="list-group-item" *ngIf="inboxMessages.length === 0">No messages found.</li>
+  </ul>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>

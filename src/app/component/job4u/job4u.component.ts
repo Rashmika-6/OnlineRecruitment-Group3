@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './job4u.component.css',
 })
 export class Job4uComponent {
-  jobs: Job[];
+  jobs: any;
 
   constructor(
     private http: HttpClient,
@@ -21,6 +21,7 @@ export class Job4uComponent {
   ngOnInit(): void {
     this.service.getAllJobs().subscribe((jobs) => {
       this.jobs = jobs;
+      console.log(this.jobs)
     });
   }
  

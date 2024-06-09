@@ -1,70 +1,151 @@
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+  />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container-fluid px-0" id="bg-div">
     <div class="row justify-content-center">
       <div class="col-lg-9 col-12">
-        <div class="card card0">
-          <div class="d-flex" id="wrapper">
+        <div class="card card0" style="top:140px;border-radius: 20px; width:200px; height:100px">
+          <div class="d-flex" >
             <!-- Sidebar -->
-            <div class="bg-light border-right" id="sidebar-wrapper">
-              <div class="sidebar-heading pt-5 pb-4"><strong>HOME</strong></div>
-              <div class="list-group list-group-flush"> <a data-toggle="tab" routerLink="/inbox" id="tab1"
-                  class="tabs list-group-item bg-light">
+            <div class="bg-light border-right" id="sidebar-wrapper" style="height: fit-content;">
+              
+              <div class="list-group list-group-flush">
+                 <a
+                  data-toggle="tab"
+                  routerLink="/contact"
+                  id="tab1"
+                  class="tabs list-group-item bg-light"
+                >
                   <div class="list-div my-2">
-                    <div class="fa fa-home"></div> &nbsp;&nbsp; Inbox
+                    <div class="fa-solid fa-message"></div>
+                    &nbsp;&nbsp; Type message
                   </div>
-                </a> <a data-toggle="tab" routerLink="/outbox" id="tab2" class="tabs list-group-item active1">
+                </a>
+                <a
+                  data-toggle="tab"
+                  routerLink="/inbox"
+                  id="tab1"
+                  class="tabs list-group-item bg-light"
+                >
                   <div class="list-div my-2">
-                    <div class="fa fa-credit-card"></div> &nbsp;&nbsp; sent
+                    <i class="fa-regular fa-comment"></i>
+                    &nbsp;&nbsp; Inbox
                   </div>
-                </a> </div>
-            </div> <!-- Page Content -->
-            <div id="page-content-wrapper">
-              <div class="row pt-3" id="border-btm">
-                <div class="col-4"> <button class="btn btn-success mt-4 ml-3 mb-3" id="menu-toggle">
-                    <div class="bar4"></div>
-                    <div class="bar4"></div>
-                  </button> </div>
-                <div class="col-8">
-                  <div class="row justify-content-right">
-                    <div class="col-12">
-                      <p class="mb-0 mr-4 mt-4 text-right">{{loggedUser?.email}}</p>
-                    </div>
+                </a>
+                <a
+                  data-toggle="tab"
+                  routerLink="/outbox"
+                  id="tab2"
+                  class="tabs list-group-item active1"
+                >
+                  <div class="list-div my-2">
+                    <i class="fa-regular fa-envelope"></i>
+                    &nbsp;&nbsp; sent
                   </div>
-                </div>
-              </div>
-              <div id="menu2" class="tab-pane in active">
-                <div class="row justify-content-center">
-                  <div class="col-11">
-                    <div class="form-card">
-                      <h3 class="mt-0 mb-4 text-center">Contact Us</h3>
-                      <form onsubmit="event.preventDefault()">
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="input-group"> <input type="email" id="cr_no" placeholder="Enter emailId..."
-                                minlength="19" maxlength="19"> <label>To: </label> </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="input-group"> <input type="text" id="exp" placeholder="Enter Your messages "
-                                minlength="200" maxlength="200"><label >Message</label></div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12"> <input type="submit" value="Send"
-                              class="btn btn-success placeicon"> </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
+            
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-12">
+        <div class="input-group" style="width: 600px;">
+          <label for="email">To:</label>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter emailId..."
+            id="email"
+            class="form-control"
+            
+          />
+        </div>
+        <div
+          *ngIf="
+            form.controls['email'].invalid &&
+            (form.controls['email'].dirty || form.controls['email'].touched)
+          "
+        >
+          <div
+            class="text-danger"
+            *ngIf="form.controls['email'].errors['required']"
+          >
+            Email is required.
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="form.controls['email'].errors['email']"
+          >
+            Invalid email format.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="input-group">
+          <label for="message">Message</label>
+          <input
+            type="text"
+            formControlName="message"
+            placeholder="Enter Your messages"
+            id="message"
+            class="form-control"
+          />
+        </div>
+        <div
+          *ngIf="
+            form.controls['message'].errors &&
+            (form.controls['message'].dirty || form.controls['message'].touched)
+          "
+        >
+          <div
+            class="text-danger"
+            *ngIf="form.controls['message'].errors['required']"
+          >
+            Message is required.
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['message'].errors['minlength'] ||
+              form.controls['message'].errors['maxlength']
+            "
+          >
+            Message must be between 10 and 200 characters.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="btn btn-success placeicon"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+           
           </div>
         </div>
       </div>
