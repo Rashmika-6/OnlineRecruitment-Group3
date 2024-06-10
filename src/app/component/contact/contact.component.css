@@ -193,4 +193,8 @@ input:focus + label{
     margin-right: 4px;
   }
 }
+.active-tab {
+  background-color: #f8f9fa; 
+  font-weight: bold;
+}
 

@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Job } from '../../shared/models/job';
 import { RoleService } from '../../role.service';
 import { HttpClient } from '@angular/common/http';
-import emailjs from '@emailjs/browser';
+
 @Component({
   selector: 'app-graduate-dashboard',
   templateUrl: './graduate-dashboard.component.html',
@@ -61,10 +61,10 @@ export class GraduateDashboardComponent implements OnInit {
     const status = appointment.status;
     switch (status) {
       case 'Accepted':
-        this.sendEmailAccepted(appointment);
+        
         return 'btn-green';
       case 'Rejected':
-        this.sendEmailRejected(appointment);
+        
         return 'btn-red';
       case 'pending':
         return 'btn-white';
@@ -72,49 +72,5 @@ export class GraduateDashboardComponent implements OnInit {
         return '';
     }
   }
-  async sendEmailAccepted(appointment: any) {
-    try {
-      const message = `
-
-      Congratulations! We are pleased to inform you that your resume has been selected for further consideration.
-
-      We would like to schedule an interview with you to discuss your application in more detail. Your interview is scheduled for 5:00pm on 21-06-2024.
--
--      Please confirm your availability for this time slot at your earliest convenience. We look forward to speaking with you soon.
- 
-    `;
-      let response = await emailjs.send('service_tw42dwi', 'template_ruz1xlc', {
-        sender: 'Admin',
-        message: message,
-        reply_to: appointment.email,
-        to_email: ' ',
-      });
-      alert('OTP sent successfully! Please check your inbox.');
-    } catch (error) {
-      console.error('Failed to send ', error);
-    }
-  }
-  async sendEmailRejected(appointment: any) {
-    try {
-      const message = `     
-
-      We regret to inform you that your application has been rejected.
-
-      We appreciate your interest in our company and the time you invested in the application process. Unfortunately, we have decided to pursue other candidates who more closely match our current needs.
-
-      We wish you the best of luck in your job search and future endeavors.
-
- 
-    `;
-      let response = await emailjs.send('service_tw42dwi', 'template_ruz1xlc', {
-        sender: 'Admin',
-        message: message,
-        reply_to: appointment.email,
-        to_email: ' ',
-      });
-      alert('OTP sent successfully! Please check your inbox.');
-    } catch (error) {
-      console.error('Failed to send ', error);
-    }
-  }
+  
 }

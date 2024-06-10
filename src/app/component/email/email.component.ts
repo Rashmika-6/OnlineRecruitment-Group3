@@ -61,8 +61,8 @@ export class EmailComponent implements OnInit {
      }
     if (enteredOTP === this.generatedOTP) {
       alert('OTP verification successful!');
-       this.router.navigate(['/roletype'], {
-         queryParams: { reply_to: this.myForm.value.email },
+       this.router.navigate(['/first'], {
+        //  queryParams: { reply_to: this.myForm.value.email },
          replaceUrl: true,
        });
    

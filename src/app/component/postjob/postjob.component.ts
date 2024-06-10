@@ -42,7 +42,7 @@ export class PostjobComponent implements OnInit {
     private http: HttpClient,
     private router: ActivatedRoute,
     private service: RecruitmentService,
-    private authData:RoleService
+    private authData:RoleService,private route:Router
   ) {}
   ngOnInit() {
     this.jobForm = this.fb.group({
@@ -94,6 +94,7 @@ export class PostjobComponent implements OnInit {
       }
     );
     alert("Job posted successfully")
+    this.route.navigate(['/employer']);
     console.log('Form submitted successfully!');
   }
 

@@ -90,7 +90,7 @@ export class ContactComponent implements OnInit {
         reply_to: this.senderEmail,
         to_email: this.form.get('email').value,
       });
-      alert('OTP sent successfully! Please check your inbox.');
+      alert('Email sent successfully');
     } catch (error) {
       console.error('Failed to send ', error);
       

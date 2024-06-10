@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Confirmedvalidator } from '../../confirmvalidator';
 import { Router } from '@angular/router';
+import emailjs from '@emailjs/browser';
+import { RoleService } from '../../role.service';
+
 import { RecruitmentService } from '../../service/recruitment.service';
 @Component({
   selector: 'app-first',
@@ -10,9 +13,10 @@ import { RecruitmentService } from '../../service/recruitment.service';
 })
 export class FirstComponent implements OnInit {
   myForm: FormGroup; // Declare myForm variable
-
-  constructor(
+  generatedOTP: string = '';
+  constructor(private authService: RoleService,
     private fb: FormBuilder,
+    
     private router: Router,
     private formDataService: RecruitmentService
   ) {}
@@ -21,7 +25,7 @@ export class FirstComponent implements OnInit {
     this.myForm = this.fb.group(
       {
         userName: ['', [Validators.required]],
-        address: ['', [Validators.required]],
+
         email: [
           '',
           [
@@ -32,6 +36,7 @@ export class FirstComponent implements OnInit {
             ),
           ],
         ],
+        otp: ['', Validators.required],
         password: ['', [Validators.required]],
         mobileNum: [
           '',
@@ -42,7 +47,8 @@ export class FirstComponent implements OnInit {
             Validators.maxLength(10),
           ],
         ],
-        dob: ['', [Validators.required]],
+
+        nationality: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]],
       },
       {
@@ -53,8 +59,41 @@ export class FirstComponent implements OnInit {
   get f() {
     return this.myForm.controls;
   }
+  async send() {
+    emailjs.init('1rY5oNPpZKkxDy-sQ');
+    this.generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+    console.log(this.generatedOTP);
+    alert('OTP sent successfully');
+    // try {
+    //   let response = await emailjs.send('service_1nyzcog', 'template_4o7ao4m', {
+    //     to_email: this.myForm.value.email,
+    //     message: this.generatedOTP,
 
-  submitForm() {
+    //   });
+    //   alert('OTP sent successfully! Please check your inbox.');
+    // } catch (error) {
+    //   console.error('Failed to send OTP:', error);
+    //   alert('Failed to send OTP. Please try again later.');
+    // }
+  }
+  submitForm1() {
+    if (this.myForm.valid) {
+      // Form is valid, submit the form
+      console.log('Form is valid');
+      console.log(this.myForm.value.email);
+      
+     this.router.navigate(['/roletype'], {
+       queryParams: { reply_to: this.myForm.value.email },
+       state: { data: this.myForm.value },
+       replaceUrl: true,
+     });
+    } else {
+      // Form is not valid, show errors
+      console.log('Form is not valid');
+      console.log(this.myForm.value);
+    }
+  }
+  submitEmail() {
     // const email = this.myForm.value.email;
     // const pass = this.myForm.value.pass;
     // if (!email || !pass) {
@@ -62,15 +101,15 @@ export class FirstComponent implements OnInit {
     //   return; // Stop further execution if any field is empty
     // }
 
-    this.router.navigate(['/email'], { replaceUrl: true });
+    // this.router.navigate(['/email'], { replaceUrl: true });
 
     const userEmail = this.myForm.value.email;
 
     const password = this.myForm.value.password;
 
-    localStorage.setItem( userEmail,password);
+    localStorage.setItem(userEmail, password);
 
-//console.log(this.myForm.value)
+    //console.log(this.myForm.value)
     // this.formDataService.addUser(this.myForm.value).subscribe(
     //   (response) => {
     //     console.log('User registered successfully:', response);
@@ -82,6 +121,18 @@ export class FirstComponent implements OnInit {
     //     // Handle error accordingly
     //   }
     // );
+  }
+  verifyOTP() {
+    const enteredOTP = this.myForm.value.otp;
+    if (!enteredOTP) {
+      alert('Please enter the OTP.');
+      return;
+    }
+    if (enteredOTP === this.generatedOTP) {
+      alert('OTP verification successful!');
+    } else {
+      alert('Incorrect OTP. Please try again.');
+    }
   }
   get Fullname(): FormControl {
     return this.myForm.get('userName') as FormControl;

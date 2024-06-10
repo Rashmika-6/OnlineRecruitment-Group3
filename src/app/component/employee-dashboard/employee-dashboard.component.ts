@@ -3,11 +3,13 @@ import { RoleService } from '../../role.service';
 import { HttpClient } from '@angular/common/http';
 import { Job } from '../../shared/models/job';
 import { Router } from '@angular/router';
+import emailjs from '@emailjs/browser';
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.css'],
 })
+  
 export class EmployeeDashboardComponent implements OnInit {
   appointmentData: any[] = [];
   jobs: Job[];
@@ -17,7 +19,7 @@ export class EmployeeDashboardComponent implements OnInit {
     private authData: RoleService,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userData = this.authData.getUserData();
@@ -118,12 +120,14 @@ export class EmployeeDashboardComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
+          this.sendEmailAccepted(response)
           alert("updated")
         },
         (error) => {
           console.log(error);
         }
-      );
+    );
+    
   }
   reject(appointemnt: any) {
     const appointmentData = {
@@ -152,11 +156,50 @@ export class EmployeeDashboardComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
+          this.sendEmailRejected(response);
           alert('updated');
         },
         (error) => {
           console.log(error);
         }
-      );
+    );
+    
   }
-}
+
+  async sendEmailAccepted(appointment: any) {
+    emailjs.init('vDckiHN-IheQl14J9');
+    try {
+      const message = `Congratulations! We are pleased to inform you that your resume has been selected for further consideration.
+
+       Your interview is scheduled for 5:00pm on 21-06-2024. Please confirm your availability for this time slot at your earliest convenience.
+
+    `;
+      let response = await emailjs.send('service_tw42dwi', 'template_ruz1xlc', {
+        sender: 'Admin',
+        message: message,
+        reply_to: appointment.email,
+        to_email: appointment.email,
+      });
+      alert('Email Sent successfully');
+    } catch (error) {
+      console.error('Failed to send ', error);
+    }
+  }
+  async sendEmailRejected(appointment: any) {
+    emailjs.init('vDckiHN-IheQl14J9');
+    try {
+      const message = `We regret to inform you that your application has been rejected.
+
+    `;
+      let response = await emailjs.send('service_tw42dwi', 'template_ruz1xlc', {
+        sender: 'Admin',
+        message: message,
+        reply_to: appointment.email,
+        to_email: appointment.email,
+      });
+      alert('Email Sent successfully');
+    } catch (error) {
+      console.error('Failed to send ', error);
+    }
+  }
+} 

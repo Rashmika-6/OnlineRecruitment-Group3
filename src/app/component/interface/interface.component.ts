@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { forkJoin } from 'rxjs';
 import { RecruitmentService } from '../../service/recruitment.service';
 import emailjs from '@emailjs/browser';
+import { Router } from '@angular/router';
 
 import {
   FormBuilder,
@@ -35,7 +36,7 @@ export class InterfaceComponent {
     private authData: RoleService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private recruitmentService: RecruitmentService
+    private recruitmentService: RecruitmentService,private router:Router
   ) {
     this.myForm = this.fb.group({
       fname: ['', Validators.required],
@@ -193,6 +194,7 @@ export class InterfaceComponent {
         console.log(error);
       }
     );
+    this.router.navigate(['/graduate', { replaceUrl: true }]);
     emailjs.init('dyuvbtv5Atr5Olu1O');
   }
 

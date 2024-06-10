@@ -50,7 +50,7 @@
           box-shadow: 0 4px 6px rgba(0, 2, 0, 2);
         "
       >
-        <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <form [formGroup]="myForm" (ngSubmit)="submitForm1()">
           <h2>Registration</h2>
           <div class="form-row">
             <div class="form-group col-md-10">
@@ -104,8 +104,17 @@
               >
                 Email is invalid.
               </div>
-              
-               
+              <button type="submit" class="btn btn-primary" (click)="send()">Send OTP</button>
+              <input
+            type="text"
+            class="form-control"
+            id="otp"
+            formControlName="otp"
+            placeholder="Enter OTP"
+            maxlength="4"
+          />
+              <button type="button" class="btn btn-primary" (click)="verifyOTP()">Verify Email</button>
+               <br>
             </div>
           
 
@@ -130,12 +139,12 @@
               >
                 Phone Number is invalid.
               </div>
-              <!-- <div
+              <div
                 class="form-text text-danger"
                 *ngIf="Phno.errors?.['minlength']&&(Phno.touched||Phno.dirty)"
               >
                 Phone Number is short.
-              </div> -->
+              </div>
               <div
                 class="form-text text-danger"
                 *ngIf="Phno.errors?.['maxlength']&&(Phno.touched||Phno.dirty)"
@@ -216,18 +225,20 @@
               <label for="others">Others</label>
             </div> -->
 
-            <!-- <div class="form-group col-md-2">
-              <label for="nationality">Nationality</label>
-              <select id="nationalitySelect">
-                <option value="" disabled selected>Select nationality</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-                <option value="Indian">Indian</option>
-                <option value="Germany">Germany</option>
-              </select>
-            </div> -->
+          <div class="form-group col-md-2">
+  <label for="nationality">Nationality</label>
+ 
+    <select formControlName="nationality">
+      <option value="" disabled selected>Select nationality</option>
+      <option value="USA">USA</option>
+      <option value="UK">UK</option>
+      <option value="Canada">Canada</option>
+      <option value="Australia">Australia</option>
+      <option value="Indian">Indian</option>
+      <option value="Germany">Germany</option>
+    </select>
+  
+</div>
           </div>
           <br />
           <button type="submit" class="btn btn-primary">Submit<a routerLink="/email"></a></button>

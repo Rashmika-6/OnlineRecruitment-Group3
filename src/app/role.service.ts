@@ -9,6 +9,7 @@ export class RoleService {
 
   login() {
     this.isAuthenticated = true;
+    
   }
 
   logout() {

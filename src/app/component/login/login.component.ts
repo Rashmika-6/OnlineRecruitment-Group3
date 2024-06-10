@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     private authService: RoleService
   ) {
     this.myform = this.fb.group({
-      userName: ['', [Validators.required]],
+      
       email: ['', [Validators.required, Validators.email]],
       role_id: ['', Validators.required],
       password: [
@@ -44,15 +44,7 @@ export class LoginComponent implements OnInit {
           ),
         ],
       ],
-      mobileNum: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[789][0-9]{9}'),
-          Validators.minLength(10),
-          Validators.maxLength(10),
-        ],
-      ],
+    
     });
   }
 
@@ -84,12 +76,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['adminEmployer'], { replaceUrl: true });
     }
     else {
-      this.http
-        .post<any>('http://localhost:8080/checkUser', { email: userEmailInput })
-        .subscribe(
-          (response) => {
-            console.log(response);
-            if (response.exists) {
+      // this.http
+      //   .post<any>('http://localhost:8080/checkUser', { email: userEmailInput })
+      //   .subscribe(
+      //     (response) => {
+      //       console.log(response);
+            if (this.myform.valid) {
               const numericPart = userRoleIdInput.replace(/\D/g, '');
               //console.log('Extracted numeric part:', numericPart);  Log the extracted numeric part
 
@@ -103,10 +95,9 @@ export class LoginComponent implements OnInit {
                .subscribe(
                  (response) => {
                    console.log(response);
-                   this.authService.saveUserData(response);
-
-                   // Statement 2: This will be executed after role data is fetched
-                   if (userRoleIdInput.startsWith('emp')) {
+                   if (this.myform.get('password').value === response.password) {
+                     this.authService.saveUserData(response);
+                        if (userRoleIdInput.startsWith('emp')) {
                      console.log('one');
                      this.authService.login();
                      this.router.navigate(['/employer'], {
@@ -118,93 +109,23 @@ export class LoginComponent implements OnInit {
                      this.authService.login();
                      this.router.navigate(['/graduate', { replaceUrl: true }]);
                    }
+                   }
+                   else {
+                     console.log("wait")
+                   }
+                   
+
+                   
+                
                  },
                  (error) => {
                    console.log(error);
                  }
                );
             } else {
-              // User doesn't exist
-const userEmailInput = this.myform.get('email').value;
-              const userPassword1 = localStorage.getItem(userEmailInput);
-             
-              const storedRoleId = localStorage.getItem(userEmailInput);
-              
-              const userPasswordInput = this.myform.get('password').value;              
-              const mobileNum = this.myform.get('mobileNum').value;
-              const userName = this.myform.get('userName').value;
-               console.log(storedRoleId, userRoleIdInput);
-              if (
-                
-             
-                storedRoleId == userRoleIdInput
-              ) {
-                const userData = {
-                  userName: userName,
-                  password: userPasswordInput,
-                  mobileNum: mobileNum,
-                  email: userEmailInput,
-                  role: this.fetchedRoleData,
-                };
-                console.log("hello")
-                this.http
-                  .post<any>('http://localhost:8080/addUser', userData)
-                  .subscribe(
-                    (response) => {
-                      console.log(response);
-                      this.authService.saveUserData(response);
-                      return response;
-                    },
-                    (error) => {
-                      console.log(error);
-                    }
-                );
-                // const numericPart = userRoleIdInput.replace(/\D/g, '');            
-                // this.roleIdNumber = numericPart
-                //   ? parseInt(numericPart, 10)
-                //   : null;
-                // this.http
-                //   .get<any>(
-                //     `http://localhost:8080/getUserByRoleId/${this.roleIdNumber}`
-                //   )
-                //   .subscribe(
-                //     (response) => {
-                //       console.log(response);
-                //       this.authService.saveUserData(response);
-                //       return response;
-                //     },
-                //     (error) => {
-                //       console.log(error);
-                //     }
-                //   );
-                if (userRoleIdInput.startsWith('emp')) {
-                  this.authService.login();
-                  console.log('two');
-                  this.roleIdString = this.route.snapshot.queryParams['roleId'];
-                  console.log(this.roleIdString);
-                  this.router.navigate(['company'], {
-                    queryParams: { roleid: this.roleIdString },
-                    replaceUrl: true,
-                  });
-                } else {
-                  console.log('three');
-                  this.authService.login();
-                  this.roleIdString = this.route.snapshot.queryParams['roleId'];
-                  console.log(this.roleIdString);
-                  this.router.navigate(['student'], {
-                    queryParams: { roleid: this.roleIdString },
-                    replaceUrl: true,
-                  });
-                }
-              }
+             alert("Invalid form")
             }
-          },
-
-          (error) => {
-            console.log(error);
-            alert('Failed to check user existence');
-          }
-        );
+       
     }
   }
 

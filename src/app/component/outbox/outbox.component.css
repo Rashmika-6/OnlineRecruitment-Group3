@@ -34,4 +34,8 @@ li {
   margin-bottom: 10px;
   padding: 10px;
 }
+.active-tab {
+  background-color: #f8f9fa; 
+  font-weight: bold;
+}
 /* https://media.istockphoto.com/id/1418045846/photo/email-phone-website-contact-us-website-banner-marketing.webp?b=1&s=170667a&w=0&k=20&c=Ln3XGXD1qDcQOu5igbrB7TY2_T-pOI2lGy0y-RHu87Y= */
